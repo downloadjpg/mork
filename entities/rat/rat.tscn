@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://dgslrqoxy2hxp"]
+
+[ext_resource type="Texture2D" uid="uid://b03aoxeib0ss7" path="res://textures/monsters/grey_rat.png" id="1_3elot"]
+[ext_resource type="Script" uid="uid://c2k4ss6ppyo0s" path="res://entities/rat/rat.gd" id="1_ykyuw"]
+[ext_resource type="Script" uid="uid://c7ykkd5yi6gjv" path="res://components/health.gd" id="3_yvjy2"]
+[ext_resource type="Script" uid="uid://cnete75ch7o2c" path="res://components/hurtbox.gd" id="4_dt4dc"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_712nc"]
+height = 1.00541
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_yvjy2"]
+radius = 2.90753
+
+[node name="Rat" type="CharacterBody3D"]
+script = ExtResource("1_ykyuw")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.629795, 0)
+pixel_size = 0.0626
+billboard = 2
+texture_filter = 0
+texture = ExtResource("1_3elot")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.685192, 0)
+shape = SubResource("CapsuleShape3D_712nc")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+target_position = Vector3(0, 0, -1.5)
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("3_yvjy2")
+metadata/_custom_type_script = "uid://c7ykkd5yi6gjv"
+
+[node name="HurtBox" type="Area3D" parent="." node_paths=PackedStringArray("health")]
+script = ExtResource("4_dt4dc")
+health = NodePath("../Health")
+metadata/_custom_type_script = "uid://cnete75ch7o2c"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HurtBox"]
+shape = SubResource("SphereShape3D_yvjy2")

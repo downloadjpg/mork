@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://bdkts3u6xqgxe"]
+
+[ext_resource type="Texture2D" uid="uid://syro4dc7ln88" path="res://textures/projectiles/arrow0.png" id="1_aqqbg"]
+[ext_resource type="Script" uid="uid://dshqodwgm0nqu" path="res://entities/projectiles/arrow_projectile.gd" id="1_l8pey"]
+[ext_resource type="Script" uid="uid://bmbe16sjosqdw" path="res://components/hitbox.gd" id="2_l8pey"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_3c3ki"]
+
+[node name="ArrowProjectile" type="CharacterBody3D"]
+script = ExtResource("1_l8pey")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+pixel_size = 0.0625
+billboard = 2
+texture_filter = 0
+texture = ExtResource("1_aqqbg")
+
+[node name="HitBox" type="Area3D" parent="."]
+script = ExtResource("2_l8pey")
+metadata/_custom_type_script = "uid://bmbe16sjosqdw"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitBox"]
+shape = SubResource("SphereShape3D_3c3ki")

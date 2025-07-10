@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://bh6vgr4s68wy3"]
+
+[ext_resource type="Script" uid="uid://c4825yx7asi1" path="res://entities/chest/chest.gd" id="1_bbmqp"]
+[ext_resource type="Texture2D" uid="uid://dijpatk0bpfqu" path="res://textures/environment/chest2_closed.png" id="1_vvkul"]
+[ext_resource type="Texture2D" uid="uid://drjjfs4cqxvug" path="res://textures/environment/chest2_open.png" id="2_bbmqp"]
+[ext_resource type="Script" uid="uid://dsr3bqbfvewpb" path="res://components/interaction_area.gd" id="4_ektp4"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_bbmqp"]
+radius = 0.8
+
+[node name="Chest" type="Node3D"]
+script = ExtResource("1_bbmqp")
+
+[node name="SpriteClosed" type="Sprite3D" parent="."]
+pixel_size = 0.0625
+billboard = 2
+texture_filter = 0
+texture = ExtResource("1_vvkul")
+
+[node name="SpriteOpen" type="Sprite3D" parent="."]
+visible = false
+pixel_size = 0.0625
+billboard = 2
+texture_filter = 0
+texture = ExtResource("2_bbmqp")
+
+[node name="InteractionArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.126838, 0, 0)
+script = ExtResource("4_ektp4")
+metadata/_custom_type_script = "uid://dsr3bqbfvewpb"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionArea"]
+shape = SubResource("SphereShape3D_bbmqp")
