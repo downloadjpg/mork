@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bh8jygorf0gkj"]
+[gd_scene load_steps=8 format=3 uid="uid://bh8jygorf0gkj"]
 
 [ext_resource type="PackedScene" uid="uid://bhx0kw633ii6j" path="res://entities/player/player.tscn" id="2_tsgde"]
 [ext_resource type="PackedScene" uid="uid://bh6vgr4s68wy3" path="res://entities/chest/chest.tscn" id="3_pmfem"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dgslrqoxy2hxp" path="res://entities/rat/rat.tscn" id="5_712nc"]
 [ext_resource type="MeshLibrary" uid="uid://deotmgceyduke" path="res://mesh_library/mesh_library.tres" id="5_i8ckm"]
 [ext_resource type="Texture2D" uid="uid://c4u1l7y47qlb8" path="res://levels/level map#01.png" id="6_i8ckm"]
+[ext_resource type="PackedScene" uid="uid://cbb1om3gr4f6o" path="res://entities/environment/torch.tscn" id="7_vons5"]
 
 [node name="World" type="Node3D"]
 
@@ -20,7 +21,7 @@ transform = Transform3D(-0.17186, 0, -0.985121, 0, 1, 0, 0.985121, 0, -0.17186, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9317, -2, -16.8497)
 
 [node name="Rat" parent="." instance=ExtResource("5_712nc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.72131, -0.628195, -9.73992)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.72131, -2.2282, -9.73992)
 
 [node name="GridMap" type="GridMap" parent="."]
 mesh_library = ExtResource("5_i8ckm")
@@ -29,7 +30,21 @@ data = {
 }
 metadata/_editor_floor_ = Vector3(0, 0, 0)
 
-[node name="LevelPlan" type="Sprite3D" parent="."]
+[node name="LevelPlan" type="Sprite3D" parent="GridMap"]
 transform = Transform3D(3.5348, 0, 0, 0, -1.54511e-07, 3.5348, 0, -3.5348, -1.54511e-07, -15.4815, 1.98051, -34.1526)
 visible = false
 texture = ExtResource("6_i8ckm")
+
+[node name="Decorations" type="Node3D" parent="."]
+
+[node name="Torch" parent="Decorations" instance=ExtResource("7_vons5")]
+transform = Transform3D(0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0, 1, -7.80711, 0.569674, -9.49215)
+
+[node name="Torch4" parent="Decorations" instance=ExtResource("7_vons5")]
+transform = Transform3D(0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0, 1, -7.80711, 0.569674, -13.4921)
+
+[node name="Torch2" parent="Decorations" instance=ExtResource("7_vons5")]
+transform = Transform3D(-0.866025, -0.5, -8.74228e-08, -0.5, 0.866025, 0, 7.57103e-08, 4.37114e-08, -1, -4.20711, 0.569674, -9.49215)
+
+[node name="Torch3" parent="Decorations" instance=ExtResource("7_vons5")]
+transform = Transform3D(-0.866025, -0.5, -8.74228e-08, -0.5, 0.866025, 0, 7.57103e-08, 4.37114e-08, -1, -4.20711, 0.569674, -13.4921)

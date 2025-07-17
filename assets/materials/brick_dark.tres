@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dg28phpu8veag"]
+
+[ext_resource type="Texture2D" uid="uid://dfiiknduhunor" path="res://assets/models/tiles_brick_dark0.png" id="1_qvysn"]
+
+[resource]
+resource_name = "BrickDark"
+cull_mode = 2
+albedo_texture = ExtResource("1_qvysn")
+texture_filter = 2

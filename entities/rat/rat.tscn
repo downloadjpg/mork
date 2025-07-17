@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://dgslrqoxy2hxp"]
 
-[ext_resource type="Texture2D" uid="uid://b03aoxeib0ss7" path="res://textures/monsters/grey_rat.png" id="1_3elot"]
+[ext_resource type="Texture2D" uid="uid://b03aoxeib0ss7" path="res://assets/textures/monsters/grey_rat.png" id="1_3elot"]
 [ext_resource type="Script" uid="uid://c2k4ss6ppyo0s" path="res://entities/rat/rat.gd" id="1_ykyuw"]
 [ext_resource type="Script" uid="uid://c7ykkd5yi6gjv" path="res://components/health.gd" id="3_yvjy2"]
 [ext_resource type="Script" uid="uid://cnete75ch7o2c" path="res://components/hurtbox.gd" id="4_dt4dc"]

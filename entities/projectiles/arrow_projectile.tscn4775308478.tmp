@@ -9,8 +9,23 @@ radius = 0.117564
 height = 0.847004
 
 [node name="ArrowProjectile" type="CharacterBody3D"]
+motion_mode = 1
 script = ExtResource("1_l8pey")
 lifetime = 10.0
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+pixel_size = 0.0313
+shaded = true
+texture_filter = 0
+texture = ExtResource("1_aqqbg")
+
+[node name="Sprite3D2" type="Sprite3D" parent="."]
+transform = Transform3D(-4.37114e-08, 4.37114e-08, 1, -1, -8.74228e-08, -4.37114e-08, 8.74228e-08, -1, 4.37114e-08, 0, 0, 0)
+pixel_size = 0.0313
+shaded = true
+texture_filter = 0
+texture = ExtResource("1_aqqbg")
 
 [node name="HitBox" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
@@ -19,19 +34,3 @@ metadata/_custom_type_script = "uid://bmbe16sjosqdw"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HitBox"]
 shape = SubResource("CapsuleShape3D_l8pey")
-
-[node name="Orientation" type="Node3D" parent="."]
-
-[node name="Sprite3D" type="Sprite3D" parent="Orientation"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
-pixel_size = 0.0313
-shaded = true
-texture_filter = 0
-texture = ExtResource("1_aqqbg")
-
-[node name="Sprite3D2" type="Sprite3D" parent="Orientation"]
-transform = Transform3D(-4.37114e-08, 4.37114e-08, 1, -1, -8.74228e-08, -4.37114e-08, 8.74228e-08, -1, 4.37114e-08, 0, 0, 0)
-pixel_size = 0.0313
-shaded = true
-texture_filter = 0
-texture = ExtResource("1_aqqbg")

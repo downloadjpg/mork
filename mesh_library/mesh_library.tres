@@ -1,9 +1,9 @@
 [gd_resource type="MeshLibrary" load_steps=37 format=4 uid="uid://deotmgceyduke"]
 
-[ext_resource type="Texture2D" uid="uid://b67kcurquwou1" path="res://textures/environment/terrain/brick_dark0.png" id="1_eu3t8"]
-[ext_resource type="Material" uid="uid://vvpqk17hi7fq" path="res://materials/brick_brown.tres" id="1_uirae"]
-[ext_resource type="Texture2D" uid="uid://dfiiknduhunor" path="res://models/tiles_brick_dark0.png" id="2_eu3t8"]
-[ext_resource type="Material" uid="uid://dg28phpu8veag" path="res://materials/brick_dark.tres" id="3_6u1tk"]
+[ext_resource type="Texture2D" uid="uid://b67kcurquwou1" path="res://assets/textures/environment/terrain/brick_dark0.png" id="1_eu3t8"]
+[ext_resource type="Material" uid="uid://vvpqk17hi7fq" path="res://assets/materials/brick_brown.tres" id="1_uirae"]
+[ext_resource type="Texture2D" uid="uid://dfiiknduhunor" path="res://assets/models/tiles_brick_dark0.png" id="2_eu3t8"]
+[ext_resource type="Material" uid="uid://dg28phpu8veag" path="res://assets/materials/brick_dark.tres" id="3_6u1tk"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_o6thm"]
 _surfaces = [{

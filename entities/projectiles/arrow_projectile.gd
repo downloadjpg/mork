@@ -10,7 +10,7 @@ func _physics_process(delta: float) -> void:
 	# # Add the gravity.
 	if not stuck:
 		velocity += get_gravity() * delta * gravity_multiplier
-
+	
 	move_and_slide()
 
 func _ready() -> void:
@@ -20,3 +20,8 @@ func _ready() -> void:
 func _on_body_collision(body: Node3D):
 	stuck = true
 	velocity = Vector3.ZERO
+
+func _process(delta: float) -> void:
+	# Make sprite follow trajectory
+	if velocity != Vector3.ZERO:
+		look_at(position + velocity)

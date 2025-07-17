@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://bnlqwj00vr36c" path="res://entities/environment/door.gd" id="1_i6j8m"]
 [ext_resource type="PackedScene" uid="uid://dx4017vqacx02" path="res://components/interaction_area.tscn" id="2_rk5sa"]
-[ext_resource type="Texture2D" uid="uid://s7764nfhy8t" path="res://textures/environment/dngn_closed_door.png" id="3_4rpcy"]
-[ext_resource type="Texture2D" uid="uid://g864db8n58e3" path="res://textures/environment/dngn_open_door.png" id="4_rk5sa"]
+[ext_resource type="Texture2D" uid="uid://s7764nfhy8t" path="res://assets/textures/environment/dngn_closed_door.png" id="3_4rpcy"]
+[ext_resource type="Texture2D" uid="uid://g864db8n58e3" path="res://assets/textures/environment/dngn_open_door.png" id="4_rk5sa"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rk5sa"]
 size = Vector3(2, 2, 0.2)
@@ -32,6 +32,7 @@ shape = SubResource("BoxShape3D_juxxh")
 [node name="SpriteClosed" type="Sprite3D" parent="."]
 transform = Transform3D(0.99786, 0, 0, 0, 0.99786, 0, 0, 0, 0.99786, 0, 1, 0)
 pixel_size = 0.0625
+shaded = true
 texture_filter = 0
 texture = ExtResource("3_4rpcy")
 
@@ -39,5 +40,6 @@ texture = ExtResource("3_4rpcy")
 transform = Transform3D(0.99786, 0, 0, 0, 0.99786, 0, 0, 0, 0.99786, 0, 1, 0)
 visible = false
 pixel_size = 0.0625
+shaded = true
 texture_filter = 0
 texture = ExtResource("4_rk5sa")

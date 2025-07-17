@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=4 uid="uid://cylqjfh7jolje"]
 
-[ext_resource type="Material" uid="uid://vvpqk17hi7fq" path="res://materials/brick_brown.tres" id="1_se8h2"]
-[ext_resource type="Material" uid="uid://dg28phpu8veag" path="res://materials/brick_dark.tres" id="2_28k7m"]
+[ext_resource type="Material" uid="uid://vvpqk17hi7fq" path="res://assets/materials/brick_brown.tres" id="1_se8h2"]
+[ext_resource type="Material" uid="uid://dg28phpu8veag" path="res://assets/materials/brick_dark.tres" id="2_28k7m"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_o6thm"]
 _surfaces = [{

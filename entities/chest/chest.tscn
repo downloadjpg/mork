@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://bh6vgr4s68wy3"]
 
 [ext_resource type="Script" uid="uid://c4825yx7asi1" path="res://entities/chest/chest.gd" id="1_bbmqp"]
-[ext_resource type="Texture2D" uid="uid://dijpatk0bpfqu" path="res://textures/environment/chest2_closed.png" id="1_vvkul"]
-[ext_resource type="Texture2D" uid="uid://drjjfs4cqxvug" path="res://textures/environment/chest2_open.png" id="2_bbmqp"]
+[ext_resource type="Texture2D" uid="uid://dijpatk0bpfqu" path="res://assets/textures/environment/chest2_closed.png" id="1_vvkul"]
+[ext_resource type="Texture2D" uid="uid://drjjfs4cqxvug" path="res://assets/textures/environment/chest2_open.png" id="2_bbmqp"]
 [ext_resource type="PackedScene" uid="uid://dx4017vqacx02" path="res://components/interaction_area.tscn" id="4_ektp4"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_bbmqp"]
@@ -14,12 +14,14 @@ script = ExtResource("1_bbmqp")
 
 [node name="SpriteClosed" type="Sprite3D" parent="."]
 pixel_size = 0.0625
+shaded = true
 texture_filter = 0
 texture = ExtResource("1_vvkul")
 
 [node name="SpriteOpen" type="Sprite3D" parent="."]
 visible = false
 pixel_size = 0.0625
+shaded = true
 texture_filter = 0
 texture = ExtResource("2_bbmqp")
 
