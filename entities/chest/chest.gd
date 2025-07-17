@@ -10,13 +10,7 @@ var looted = false
 
 func _ready() -> void:
 	interaction_area.connect("interact", _on_interact)
-	interaction_area.connect("focus", _on_focus)
-	interaction_area.connect("unfocus", _on_unfocus)
 
-func _process(delta):
-	#sprite_closed.modulate = Color.WHITE
-	pass
-	
 func open():
 	if looted:
 		return
@@ -30,9 +24,3 @@ func open():
 # Base 'interact' function that the player's raycast can call
 func _on_interact():
 	open()
-
-func _on_focus():
-	sprite_closed.modulate = Color.RED
-
-func _on_unfocus():
-	sprite_closed.modulate = Color.WHITE

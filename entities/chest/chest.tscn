@@ -23,7 +23,8 @@ pixel_size = 0.0625
 texture_filter = 0
 texture = ExtResource("2_bbmqp")
 
-[node name="InteractionArea" parent="." instance=ExtResource("4_ektp4")]
+[node name="InteractionArea" parent="." node_paths=PackedStringArray("modulate_targets") instance=ExtResource("4_ektp4")]
+modulate_targets = [NodePath("../SpriteClosed")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionArea"]
 shape = SubResource("SphereShape3D_bbmqp")
