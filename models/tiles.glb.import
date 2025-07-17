@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://ch5r4eruk0c2f"
-path="res://.godot/imported/brick.glb-e638d8c24b1ef123aeb8188535621295.scn"
+uid="uid://blso1n4wyqwyc"
+path="res://.godot/imported/tiles.glb-89aff844165b18cee93f4aca5a7614da.scn"
 
 [deps]
 
-source_file="res://models/brick.glb"
-dest_files=["res://.godot/imported/brick.glb-e638d8c24b1ef123aeb8188535621295.scn"]
+source_file="res://models/tiles.glb"
+dest_files=["res://.godot/imported/tiles.glb-89aff844165b18cee93f4aca5a7614da.scn"]
 
 [params]
 
@@ -32,23 +32,6 @@ animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
-_subresources={
-"materials": {
-"Brick": {
-"use_external/enabled": true,
-"use_external/path": "res://materials/Brick.tres"
-}
-},
-"meshes": {
-"brick_Cube_001": {
-"generate/lightmap_uv": 0,
-"generate/lods": 0,
-"generate/shadow_meshes": 0,
-"lods/normal_merge_angle": 60.0,
-"save_to_file/enabled": true,
-"save_to_file/path": "res://cube.res"
-}
-}
-}
+_subresources={}
 gltf/naming_version=1
 gltf/embedded_image_handling=1

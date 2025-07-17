@@ -23,8 +23,12 @@ GameManager="*res://game_manager.gd"
 
 window/size/viewport_width=720
 window/size/viewport_height=480
-window/size/initial_position_type=2
+window/stretch/mode="viewport"
 window/main_scene="uid://bh8jygorf0gkj"
+
+[gui]
+
+theme/custom_font="uid://2pwtgcbhnrfx"
 
 [input]
 
@@ -73,6 +77,12 @@ weapon_scroll_down={
 "events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":16,"position":Vector2(97, 21),"global_position":Vector2(106, 69),"factor":1.0,"button_index":5,"canceled":false,"pressed":true,"double_click":false,"script":null)
 ]
 }
+
+[layer_names]
+
+3d_physics/layer_1="World"
+3d_physics/layer_2="Player"
+3d_physics/layer_3="Interaction"
 
 [rendering]
 

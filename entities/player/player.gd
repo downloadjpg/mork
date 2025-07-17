@@ -6,7 +6,8 @@ var speed = 5
 var jump_speed = 5
 var mouse_sensitivity = 0.002
 
-@onready var weapon = $Camera3D/Crossbow
+@onready var weapon : Weapon = $Camera3D/WeaponHolster/Weapon
+@onready var health: Health = $Health
 
 func _ready():
 	set_player_status()
@@ -29,7 +30,7 @@ func _input(event):
 		$Camera3D.rotation.x = clampf($Camera3D.rotation.x, -deg_to_rad(70), deg_to_rad(70))
 	
 	if event.is_action_pressed("shoot"):
-		weapon.shoot(-$Camera3D.global_basis.z)
+		weapon.fire_weapon(-$Camera3D.global_basis.z)
 
 func kill():
 	get_tree().reload_current_scene()

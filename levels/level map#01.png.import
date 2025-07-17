@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://g864db8n58e3"
-path.s3tc="res://.godot/imported/dngn_open_door.png-4674b6818c3beb4aa6b0d84d48154ebe.s3tc.ctex"
+uid="uid://c4u1l7y47qlb8"
+path.s3tc="res://.godot/imported/level map#01.png-44a60af6893929bd671cbe51b08ec2c3.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://textures/environment/dngn_open_door.png"
-dest_files=["res://.godot/imported/dngn_open_door.png-4674b6818c3beb4aa6b0d84d48154ebe.s3tc.ctex"]
+source_file="res://levels/level map#01.png"
+dest_files=["res://.godot/imported/level map#01.png-44a60af6893929bd671cbe51b08ec2c3.s3tc.ctex"]
 
 [params]
 

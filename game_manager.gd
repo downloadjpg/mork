@@ -2,9 +2,11 @@ extends Node
 
 signal player_set
 var player : Player = null
+var inventory = {}
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	inventory["key"] = 0
 
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):

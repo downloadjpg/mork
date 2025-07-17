@@ -1,40 +1,79 @@
 extends CharacterBody3D
- 
-const MOVE_SPEED = 3
- 
-@onready var raycast = $RayCast3D
-#@onready var anim_player = $AnimationPlayer
- 
-var player: Player = null
-var dead: bool = false
+class_name Enemy
 
-func _ready() -> void:
-	GameManager.connect("player_set", _on_player_set)
-	$Health.health_depleted.connect(_on_health_depleted)
+@onready var player_detection : PlayerDetection = $PlayerDetection 
+@onready var new_wander_target_timer : Timer = $WanderTimer
 
-func _physics_process(delta):
-	if dead:
-		return
-	if player == null:
-		player = GameManager.player
-		return
- 
-	var vec_to_player = player.position - position
-	vec_to_player = vec_to_player.normalized()
-	raycast.target_position = vec_to_player * 1.5
- 
-	move_and_collide(vec_to_player * MOVE_SPEED * delta)
+@export var move_speed := 10.0
+@export var detection_range := 10.0
+@export var attack_range := 1.0
 
- 
-func kill():
-	dead = true
-	$CollisionShape.disabled = true
-	#anim_player.play("die")
- 
-func _on_player_set():
-	print('eek!')
-	player = GameManager.player
+enum State {WANDER, PURSUE}
+var current_state := State.WANDER
+
+var wander_target : Vector3 # global(?) position that the enemy wanders to
+
+# states:
+# wander, pursue
+
+func _ready():
+	player_detection.player_detected.connect(_on_player_detected)
+
+func _physics_process(delta: float) -> void:
+	state_process(delta)
+
+func _on_player_detected(player: Player):
+	print('gabba goo!')
+
+func state_enter():
+	match current_state:
+		State.WANDER:
+			enter_state_wander()
+		State.PURSUE:
+			enter_state_pursue()
+
+func state_exit():
+	match current_state:
+		State.WANDER:
+			exit_state_wander()
+		State.PURSUE:
+			exit_state_pursue()
+
+func state_process(delta: float):
+	match current_state:
+		State.WANDER:
+			process_state_wander(delta)
+		State.PURSUE:
+			process_state_pursue(delta)
 
 
-func _on_health_depleted():
-	queue_free()
+func enter_state_wander():
+	pass
+
+func process_state_wander(delta: float):
+	# if our timer has expired, pick a new position
+	if not wander_target or new_wander_target_timer.time_left == 0:
+		print('new loc')
+		# select a new wander position, start the timer
+		var direction = Vector3(randf(), 0, randf())
+		var length = randf_range(1, 5)
+		wander_target = position + direction * length
+		new_wander_target_timer.start()
+	# move towards our target position
+	var dir = (wander_target - position).normalized()
+	velocity = move_speed * dir
+	move_and_slide()
+	
+
+func exit_state_wander():
+	pass
+
+
+func enter_state_pursue():
+	pass
+
+func process_state_pursue(delta: float):
+	pass
+
+func exit_state_pursue():
+	pass

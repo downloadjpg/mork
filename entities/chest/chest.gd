@@ -23,6 +23,8 @@ func open():
 	sprite_closed.visible = false
 	sprite_open.visible = true
 	GameManager.send_message("you got a key!")
+	GameManager.inventory["key"] += 1
+	looted = true
 
 
 # Base 'interact' function that the player's raycast can call

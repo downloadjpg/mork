@@ -1,27 +1,42 @@
-[gd_scene load_steps=5 format=3 uid="uid://1vh0v16l8qpl"]
+[gd_scene load_steps=7 format=3 uid="uid://1vh0v16l8qpl"]
 
 [ext_resource type="Script" uid="uid://bnlqwj00vr36c" path="res://entities/environment/door.gd" id="1_i6j8m"]
-[ext_resource type="Script" uid="uid://dsr3bqbfvewpb" path="res://components/interaction_area.gd" id="1_jhlid"]
+[ext_resource type="PackedScene" uid="uid://dx4017vqacx02" path="res://components/interaction_area.tscn" id="2_rk5sa"]
+[ext_resource type="Texture2D" uid="uid://s7764nfhy8t" path="res://textures/environment/dngn_closed_door.png" id="3_4rpcy"]
+[ext_resource type="Texture2D" uid="uid://g864db8n58e3" path="res://textures/environment/dngn_open_door.png" id="4_rk5sa"]
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_i6j8m"]
-data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+[sub_resource type="BoxShape3D" id="BoxShape3D_rk5sa"]
+size = Vector3(2, 2, 0.2)
 
-[sub_resource type="BoxMesh" id="BoxMesh_4rpcy"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_juxxh"]
+size = Vector3(2, 2, 1)
 
 [node name="Door" type="Node3D"]
 script = ExtResource("1_i6j8m")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_i6j8m")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.49012e-08)
+shape = SubResource("BoxShape3D_rk5sa")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_4rpcy")
+[node name="InteractionArea" parent="." instance=ExtResource("2_rk5sa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+visible = true
 
-[node name="InteractionArea" type="Area3D" parent="."]
-script = ExtResource("1_jhlid")
-metadata/_custom_type_script = "uid://dsr3bqbfvewpb"
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionArea"]
+shape = SubResource("BoxShape3D_juxxh")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="InteractionArea"]
-shape = SubResource("ConcavePolygonShape3D_i6j8m")
+[node name="SpriteClosed" type="Sprite3D" parent="."]
+transform = Transform3D(0.99786, 0, 0, 0, 0.99786, 0, 0, 0, 0.99786, 0, 1, 0)
+pixel_size = 0.0625
+texture_filter = 0
+texture = ExtResource("3_4rpcy")
+
+[node name="SpriteOpen" type="Sprite3D" parent="."]
+transform = Transform3D(0.99786, 0, 0, 0, 0.99786, 0, 0, 0, 0.99786, 0, 1, 0)
+visible = false
+pixel_size = 0.0625
+texture_filter = 0
+texture = ExtResource("4_rk5sa")
