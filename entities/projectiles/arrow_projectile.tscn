@@ -4,20 +4,29 @@
 [ext_resource type="Script" uid="uid://dshqodwgm0nqu" path="res://entities/projectiles/arrow_projectile.gd" id="1_l8pey"]
 [ext_resource type="Script" uid="uid://bmbe16sjosqdw" path="res://components/hitbox.gd" id="2_l8pey"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_3c3ki"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l8pey"]
+radius = 0.2
+height = 1.2
 
 [node name="ArrowProjectile" type="CharacterBody3D"]
 script = ExtResource("1_l8pey")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 pixel_size = 0.0625
-billboard = 2
+texture_filter = 0
+texture = ExtResource("1_aqqbg")
+
+[node name="Sprite3D2" type="Sprite3D" parent="."]
+transform = Transform3D(-4.37114e-08, 4.37114e-08, 1, -1, -8.74228e-08, -4.37114e-08, 8.74228e-08, -1, 4.37114e-08, 0, 0, 0)
+pixel_size = 0.0625
 texture_filter = 0
 texture = ExtResource("1_aqqbg")
 
 [node name="HitBox" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 script = ExtResource("2_l8pey")
 metadata/_custom_type_script = "uid://bmbe16sjosqdw"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HitBox"]
-shape = SubResource("SphereShape3D_3c3ki")
+shape = SubResource("CapsuleShape3D_l8pey")
