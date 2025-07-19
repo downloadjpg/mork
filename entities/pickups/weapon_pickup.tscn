@@ -13,11 +13,14 @@ script = ExtResource("1_x8mnu")
 shape = SubResource("SphereShape3D_7ugiu")
 
 [node name="SineFloat" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0119595, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0916077, 0)
 script = ExtResource("2_kp0uy")
-starting_position = null
-amplitude = 0.045
+amplitude = 0.1
+frequency = 0.4
+metadata/_custom_type_script = "uid://dmse8q8nfu63v"
 
 [node name="Sprite3D" type="Sprite3D" parent="SineFloat"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.126259, 0)
+pixel_size = 0.0208
 texture_filter = 0
 texture = ExtResource("2_7ugiu")
