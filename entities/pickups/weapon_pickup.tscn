@@ -6,14 +6,15 @@
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_7ugiu"]
 
-[node name="WeaponPickup" type="Area3D"]
+[node name="CrossbowPickup" type="Area3D"]
 script = ExtResource("1_x8mnu")
+pickup_message = "You find a crossbow! Medieval."
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_7ugiu")
 
 [node name="SineFloat" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0916077, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.026459, 0)
 script = ExtResource("2_kp0uy")
 amplitude = 0.1
 frequency = 0.4
