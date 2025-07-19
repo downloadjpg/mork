@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bh8jygorf0gkj"]
+[gd_scene load_steps=9 format=3 uid="uid://bh8jygorf0gkj"]
 
 [ext_resource type="PackedScene" uid="uid://bhx0kw633ii6j" path="res://entities/player/player.tscn" id="2_tsgde"]
 [ext_resource type="PackedScene" uid="uid://bh6vgr4s68wy3" path="res://entities/chest/chest.tscn" id="3_pmfem"]
@@ -7,6 +7,7 @@
 [ext_resource type="MeshLibrary" uid="uid://deotmgceyduke" path="res://mesh_library/mesh_library.tres" id="5_i8ckm"]
 [ext_resource type="Texture2D" uid="uid://c4u1l7y47qlb8" path="res://levels/level map#01.png" id="6_i8ckm"]
 [ext_resource type="PackedScene" uid="uid://cbb1om3gr4f6o" path="res://entities/environment/torch.tscn" id="7_vons5"]
+[ext_resource type="PackedScene" uid="uid://dencplf0hqwdq" path="res://entities/pickups/weapon_pickup.tscn" id="8_legw5"]
 
 [node name="World" type="Node3D"]
 
@@ -48,3 +49,6 @@ transform = Transform3D(-0.866025, -0.5, -8.74228e-08, -0.5, 0.866025, 0, 7.5710
 
 [node name="Torch3" parent="Decorations" instance=ExtResource("7_vons5")]
 transform = Transform3D(-0.866025, -0.5, -8.74228e-08, -0.5, 0.866025, 0, 7.57103e-08, 4.37114e-08, -1, -4.20711, 0.569674, -13.4921)
+
+[node name="WeaponPickup" parent="." instance=ExtResource("8_legw5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.48336, -1.26029, -7.7911)

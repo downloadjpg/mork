@@ -4,10 +4,10 @@ class_name Player
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var speed = 5
 var jump_speed = 5
-var mouse_sensitivity = 0.002
+var mouse_sensitivity = 0.0025
 
-@onready var weapon : Weapon = $Camera3D/WeaponHolster/Weapon
 @onready var health: Health = $Health
+@onready var weapon_inventory : WeaponInventory = $Camera3D/WeaponInventory
 
 func _ready():
 	set_player_status()
@@ -28,9 +28,6 @@ func _input(event):
 		rotate_y(-event.relative.x * mouse_sensitivity)
 		$Camera3D.rotate_x(-event.relative.y * mouse_sensitivity)
 		$Camera3D.rotation.x = clampf($Camera3D.rotation.x, -deg_to_rad(70), deg_to_rad(70))
-	
-	if event.is_action_pressed("shoot"):
-		weapon.fire_weapon(-$Camera3D.global_basis.z)
 
 func kill():
 	get_tree().reload_current_scene()
@@ -38,3 +35,7 @@ func kill():
 func set_player_status():
 	#get_tree().call_group("enemies", "set_player", self)
 	GameManager.set_player(self)
+
+func pickup_weapon(weapon_scene: PackedScene):
+	weapon_inventory.add_to_inventory(weapon_scene)
+		

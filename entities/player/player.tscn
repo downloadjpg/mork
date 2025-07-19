@@ -1,10 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bhx0kw633ii6j"]
+[gd_scene load_steps=7 format=3 uid="uid://bhx0kw633ii6j"]
 
 [ext_resource type="Script" uid="uid://bm4oichhselaf" path="res://entities/player/player.gd" id="1_b0kkn"]
 [ext_resource type="Texture2D" uid="uid://djj5f0x5qsqb0" path="res://assets/textures/monsters/human.png" id="1_merdl"]
 [ext_resource type="Script" uid="uid://cnyov6scfkvxb" path="res://entities/player/interaction_ray.gd" id="3_sglur"]
-[ext_resource type="Script" uid="uid://bodluwhnlb5o8" path="res://weapon.gd" id="4_8fjmc"]
-[ext_resource type="PackedScene" uid="uid://bdkts3u6xqgxe" path="res://entities/projectiles/arrow_projectile.tscn" id="5_8fjmc"]
+[ext_resource type="Script" uid="uid://mw677sgbdi3o" path="res://entities/player/weapon_inventory.gd" id="4_8fjmc"]
 [ext_resource type="Script" uid="uid://c7ykkd5yi6gjv" path="res://components/health.gd" id="5_fkugw"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_u3f3p"]
@@ -35,15 +34,8 @@ collision_mask = 4
 collide_with_areas = true
 script = ExtResource("3_sglur")
 
-[node name="WeaponHolster" type="Marker3D" parent="Camera3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.101532, -0.0864842, -1.3)
-
-[node name="Weapon" type="Node3D" parent="Camera3D/WeaponHolster"]
-transform = Transform3D(1.00057, 0, 0, 0, 1.00057, 0, 0, 0, 1.00057, 0, 0, 0)
+[node name="WeaponInventory" type="Node3D" parent="Camera3D"]
 script = ExtResource("4_8fjmc")
-projectile_scene = ExtResource("5_8fjmc")
-projectile_speed = 20.0
-metadata/_custom_type_script = "uid://bodluwhnlb5o8"
 
 [node name="Health" type="Node" parent="."]
 script = ExtResource("5_fkugw")

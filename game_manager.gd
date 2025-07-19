@@ -20,5 +20,5 @@ func set_player(node: Player):
 	emit_signal("player_set")
 
 func send_message(message: String):
-	var message_log = get_node("/root/Main/UI/MessageLog")
+	var message_log = get_node("/root/Main/UI/MarginContainer/MessageLog")
 	message_log.send_message(message)

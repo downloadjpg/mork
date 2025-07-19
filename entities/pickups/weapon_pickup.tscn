@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://dencplf0hqwdq"]
+
+[ext_resource type="Script" uid="uid://doyaui233uwtd" path="res://entities/pickups/weapon_pickup.gd" id="1_x8mnu"]
+[ext_resource type="Texture2D" uid="uid://ddkqajkh5ayqm" path="res://assets/textures/weapons/crossbow1.png" id="2_7ugiu"]
+[ext_resource type="Script" uid="uid://dmse8q8nfu63v" path="res://entities/pickups/sine_float.gd" id="2_kp0uy"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_7ugiu"]
+
+[node name="WeaponPickup" type="Area3D"]
+script = ExtResource("1_x8mnu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_7ugiu")
+
+[node name="SineFloat" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0119595, 0)
+script = ExtResource("2_kp0uy")
+starting_position = null
+amplitude = 0.045
+
+[node name="Sprite3D" type="Sprite3D" parent="SineFloat"]
+texture_filter = 0
+texture = ExtResource("2_7ugiu")

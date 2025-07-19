@@ -23,7 +23,7 @@ func _on_interact():
 			GameManager.inventory["key"] -= 1
 			open()
 		else:
-			GameManager.send_message("The door rattles. You need a key!")
+			GameManager.send_message("The door rattles. Locked!")
 			
 	else:
 		open()
