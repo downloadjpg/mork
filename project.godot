@@ -11,9 +11,10 @@ config_version=5
 [application]
 
 config/name="MORK"
+config/description="2.5D FPS created for DIG 2632, Summer 2025"
 run/main_scene="uid://7mgcejtwwy0m"
 config/features=PackedStringArray("4.4", "Mobile")
-config/icon="res://icon.svg"
+config/icon="uid://b6c44fv07n2i1"
 
 [autoload]
 
