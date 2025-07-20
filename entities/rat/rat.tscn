@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dgslrqoxy2hxp"]
+[gd_scene load_steps=12 format=3 uid="uid://dgslrqoxy2hxp"]
 
 [ext_resource type="Texture2D" uid="uid://b03aoxeib0ss7" path="res://assets/textures/monsters/grey_rat.png" id="1_3elot"]
 [ext_resource type="Script" uid="uid://c2k4ss6ppyo0s" path="res://entities/rat/rat.gd" id="1_ykyuw"]
@@ -12,12 +12,77 @@ height = 1.00541
 [sub_resource type="SphereShape3D" id="SphereShape3D_yvjy2"]
 radius = 0.880068
 
+[sub_resource type="Animation" id="Animation_dt4dc"]
+resource_name = "hurt"
+length = 0.200003
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 0.31751, 0.280189, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_b6v2d"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.4, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_5texh"]
+resource_name = "die"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0.4, 0), Vector3(0, 1.3, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5texh"]
+_data = {
+&"RESET": SubResource("Animation_b6v2d"),
+&"die": SubResource("Animation_5texh"),
+&"hurt": SubResource("Animation_dt4dc")
+}
+
 [node name="Rat" type="CharacterBody3D"]
 script = ExtResource("1_ykyuw")
 move_speed = 1.0
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.629795, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
 pixel_size = 0.0626
 billboard = 2
 texture_filter = 0
@@ -34,10 +99,11 @@ target_position = Vector3(0, 0, -1.5)
 script = ExtResource("3_yvjy2")
 metadata/_custom_type_script = "uid://c7ykkd5yi6gjv"
 
-[node name="HurtBox" type="Area3D" parent="." node_paths=PackedStringArray("health")]
+[node name="HurtBox" type="Area3D" parent="." node_paths=PackedStringArray("health", "animation_player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 script = ExtResource("4_dt4dc")
 health = NodePath("../Health")
+animation_player = NodePath("../AnimationPlayer")
 metadata/_custom_type_script = "uid://cnete75ch7o2c"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HurtBox"]
@@ -49,3 +115,8 @@ shape = SubResource("SphereShape3D_yvjy2")
 [node name="WanderTimer" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_5texh")
+}
