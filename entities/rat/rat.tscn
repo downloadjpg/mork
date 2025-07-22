@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dgslrqoxy2hxp"]
+[gd_scene load_steps=14 format=3 uid="uid://dgslrqoxy2hxp"]
 
 [ext_resource type="Texture2D" uid="uid://b03aoxeib0ss7" path="res://assets/textures/monsters/grey_rat.png" id="1_3elot"]
 [ext_resource type="Script" uid="uid://c2k4ss6ppyo0s" path="res://entities/rat/rat.gd" id="1_ykyuw"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://cnete75ch7o2c" path="res://components/hurtbox.gd" id="4_dt4dc"]
 [ext_resource type="PackedScene" uid="uid://chqy4xa7xt1an" path="res://components/player_detection.tscn" id="5_dt4dc"]
 [ext_resource type="PackedScene" uid="uid://iyq6fj27vvpv" path="res://effects/death_particle.tscn" id="6_b6v2d"]
+[ext_resource type="PackedScene" uid="uid://byn4vgdaavyqd" path="res://effects/blood_particle.tscn" id="7_5texh"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_712nc"]
 height = 1.00541
@@ -42,10 +43,22 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("CPUParticles3D:emitting")
+tracks/2/path = NodePath("DeathParticle:emitting")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BloodParticle:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -70,7 +83,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CPUParticles3D:emitting")
+tracks/1/path = NodePath("DeathParticle:emitting")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -95,6 +108,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(1, 0.31751, 0.280189, 1), Color(1, 1, 1, 1)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BloodParticle:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5texh"]
 _data = {
@@ -116,7 +141,7 @@ texture_filter = 0
 texture = ExtResource("1_3elot")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.685192, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.485192, 0)
 shape = SubResource("CapsuleShape3D_712nc")
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
@@ -128,6 +153,7 @@ metadata/_custom_type_script = "uid://c7ykkd5yi6gjv"
 
 [node name="HurtBox" type="Area3D" parent="." node_paths=PackedStringArray("health")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+visible = false
 script = ExtResource("4_dt4dc")
 health = NodePath("../Health")
 metadata/_custom_type_script = "uid://cnete75ch7o2c"
@@ -147,9 +173,10 @@ libraries = {
 &"": SubResource("AnimationLibrary_5texh")
 }
 
-[node name="CPUParticles3D" parent="." instance=ExtResource("6_b6v2d")]
-emitting = false
-one_shot = true
-explosiveness = 1.0
+[node name="DeathParticle" parent="." instance=ExtResource("6_b6v2d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 direction = Vector3(0, 1, 0)
 initial_velocity_max = 4.0
+
+[node name="BloodParticle" parent="." instance=ExtResource("7_5texh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.473864, 0)

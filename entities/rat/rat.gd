@@ -66,6 +66,7 @@ func process_state_wander(delta: float):
 	# move towards our target position
 	var dir = (wander_target - position).normalized()
 	velocity = move_speed * dir
+	velocity += get_gravity()
 	move_and_slide()
 	
 
@@ -77,6 +78,8 @@ func enter_state_pursue():
 	pass
 
 func process_state_pursue(delta: float):
+	velocity += get_gravity()
+	move_and_slide()
 	pass
 
 func exit_state_pursue():

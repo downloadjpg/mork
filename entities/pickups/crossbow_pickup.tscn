@@ -14,7 +14,7 @@ pickup_message = "You find a crossbow! Medieval."
 shape = SubResource("SphereShape3D_7ugiu")
 
 [node name="SineFloat" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0333301, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0881951, 0)
 script = ExtResource("2_kp0uy")
 amplitude = 0.1
 frequency = 0.4

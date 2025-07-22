@@ -21,7 +21,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_nisn2"]
 resource_name = "fire"
-length = 0.833337
+length = 0.600003
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true

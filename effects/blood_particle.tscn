@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://byn4vgdaavyqd"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ypc3f"]
+albedo_color = Color(0.632813, 0.0683568, 0.0541922, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_emdme"]
+material = SubResource("StandardMaterial3D_ypc3f")
+size = Vector3(0.05, 0.05, 0.05)
+
+[node name="BloodParticle" type="CPUParticles3D"]
+emitting = false
+one_shot = true
+explosiveness = 1.0
+mesh = SubResource("BoxMesh_emdme")
+emission_shape = 1
+emission_sphere_radius = 0.25
+spread = 180.0
+flatness = 1.0
+initial_velocity_max = 4.0

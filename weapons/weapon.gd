@@ -18,6 +18,7 @@ func fire_weapon(forward_direction):
 		return
 	if animation_player.is_playing():
 		return
+	current_ammo -= 1
 	if animation_player.has_animation("fire"):
 		animation_player.play("fire")
 		
