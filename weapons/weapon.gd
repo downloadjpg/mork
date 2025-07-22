@@ -13,6 +13,8 @@ var current_ammo = initial_ammo
 func fire_weapon(forward_direction):
 	if current_ammo <= 0:
 		return
+	if not projectile_scene:
+		return
 
 		# spawn a projectile and set its velocity
 	var projectile_instance = projectile_scene.instantiate()

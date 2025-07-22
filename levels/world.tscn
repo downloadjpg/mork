@@ -1,11 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://bh8jygorf0gkj"]
+[gd_scene load_steps=10 format=3 uid="uid://bh8jygorf0gkj"]
 
 [ext_resource type="PackedScene" uid="uid://dj8ilmaibdb5t" path="res://weapons/sword.tscn" id="2_687qm"]
 [ext_resource type="PackedScene" uid="uid://bhx0kw633ii6j" path="res://entities/player/player.tscn" id="2_tsgde"]
 [ext_resource type="PackedScene" uid="uid://cyy04ts8ffma4" path="res://weapons/crossbow.tscn" id="3_lmpr0"]
 [ext_resource type="PackedScene" uid="uid://bh6vgr4s68wy3" path="res://entities/chest/chest.tscn" id="3_pmfem"]
 [ext_resource type="PackedScene" uid="uid://1vh0v16l8qpl" path="res://entities/environment/door.tscn" id="4_w32yo"]
-[ext_resource type="PackedScene" uid="uid://dgslrqoxy2hxp" path="res://entities/rat/rat.tscn" id="5_712nc"]
 [ext_resource type="MeshLibrary" uid="uid://deotmgceyduke" path="res://mesh_library/mesh_library.tres" id="5_i8ckm"]
 [ext_resource type="Texture2D" uid="uid://c4u1l7y47qlb8" path="res://levels/level map#01.png" id="6_i8ckm"]
 [ext_resource type="PackedScene" uid="uid://cbb1om3gr4f6o" path="res://entities/environment/torch.tscn" id="7_vons5"]
@@ -26,9 +25,6 @@ transform = Transform3D(-0.17186, 0, -0.985121, 0, 1, 0, 0.985121, 0, -0.17186, 
 
 [node name="Door" parent="." instance=ExtResource("4_w32yo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9317, -2, -16.8497)
-
-[node name="Rat" parent="." instance=ExtResource("5_712nc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.72131, -2.2282, -9.73992)
 
 [node name="RoofGridMap" type="GridMap" parent="."]
 mesh_library = ExtResource("5_i8ckm")
@@ -66,8 +62,5 @@ transform = Transform3D(-0.866025, -0.5, -8.74228e-08, -0.5, 0.866025, 0, 7.5710
 [node name="CrossbowPickup" parent="." instance=ExtResource("8_legw5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.04913, -1.26029, -19.9824)
 pickup_message = "You pick up a crossbow. Medieval."
-
-[node name="Rat2" parent="." instance=ExtResource("5_712nc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.20295, -1.2984, -7.04237)
 
 [editable path="Player"]

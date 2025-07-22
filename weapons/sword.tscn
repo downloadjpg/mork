@@ -46,7 +46,7 @@ projectile_speed = 20.0
 metadata/_custom_type_script = "uid://bodluwhnlb5o8"
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(-0.650042, 0.58145, -0.489245, 0.666688, 0.745336, 3.51583e-08, -0.364652, 0.326174, 0.872146, 0.177817, -0.252759, -0.327223)
+transform = Transform3D(-0.650045, 0.581447, -0.489244, 0.666685, 0.745339, 3.51583e-08, -0.364653, 0.326172, 0.872147, 0.177817, -0.252759, -0.327223)
 offset = Vector2(7.8, 7.785)
 texture_filter = 0
 texture = ExtResource("2_oivwf")
