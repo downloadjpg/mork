@@ -4,7 +4,6 @@ extends Area3D
 signal received_damage(damage: int)
 
 @export var health: Health
-@export var animation_player : AnimationPlayer
 
 func _ready() -> void:
 	connect("area_entered", _on_area_entered)
@@ -18,6 +17,5 @@ func _on_area_entered(hitbox: HitBox) -> void:
 func take_damage(hitbox: HitBox):
 	health.health -= hitbox.damage
 	received_damage.emit(hitbox.damage)
-	if animation_player and animation_player.has_animation("hurt"):
-			animation_player.play("hurt")
+
 		

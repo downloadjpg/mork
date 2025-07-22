@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://dgslrqoxy2hxp"]
+[gd_scene load_steps=13 format=3 uid="uid://dgslrqoxy2hxp"]
 
 [ext_resource type="Texture2D" uid="uid://b03aoxeib0ss7" path="res://assets/textures/monsters/grey_rat.png" id="1_3elot"]
 [ext_resource type="Script" uid="uid://c2k4ss6ppyo0s" path="res://entities/rat/rat.gd" id="1_ykyuw"]
 [ext_resource type="Script" uid="uid://c7ykkd5yi6gjv" path="res://components/health.gd" id="3_yvjy2"]
 [ext_resource type="Script" uid="uid://cnete75ch7o2c" path="res://components/hurtbox.gd" id="4_dt4dc"]
 [ext_resource type="PackedScene" uid="uid://chqy4xa7xt1an" path="res://components/player_detection.tscn" id="5_dt4dc"]
+[ext_resource type="PackedScene" uid="uid://iyq6fj27vvpv" path="res://effects/death_particle.tscn" id="6_b6v2d"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_712nc"]
 height = 1.00541
@@ -29,29 +30,54 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite3D:position")
+tracks/1/path = NodePath("Sprite3D:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 0.4, 0)]
+"values": [Vector3(1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CPUParticles3D:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_5texh"]
 resource_name = "die"
+length = 0.66667
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite3D:position")
+tracks/0/path = NodePath("Sprite3D:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.333333),
+"times": PackedFloat32Array(0.05, 0.433333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(0, 0.4, 0), Vector3(0, 1.3, 0)]
+"values": [Vector3(1, 1, 1), Vector3(0.01, 0.01, 0.01)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CPUParticles3D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0333333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_dt4dc"]
@@ -85,6 +111,7 @@ move_speed = 1.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
 pixel_size = 0.0626
 billboard = 2
+shaded = true
 texture_filter = 0
 texture = ExtResource("1_3elot")
 
@@ -99,11 +126,10 @@ target_position = Vector3(0, 0, -1.5)
 script = ExtResource("3_yvjy2")
 metadata/_custom_type_script = "uid://c7ykkd5yi6gjv"
 
-[node name="HurtBox" type="Area3D" parent="." node_paths=PackedStringArray("health", "animation_player")]
+[node name="HurtBox" type="Area3D" parent="." node_paths=PackedStringArray("health")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 script = ExtResource("4_dt4dc")
 health = NodePath("../Health")
-animation_player = NodePath("../AnimationPlayer")
 metadata/_custom_type_script = "uid://cnete75ch7o2c"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HurtBox"]
@@ -120,3 +146,10 @@ one_shot = true
 libraries = {
 &"": SubResource("AnimationLibrary_5texh")
 }
+
+[node name="CPUParticles3D" parent="." instance=ExtResource("6_b6v2d")]
+emitting = false
+one_shot = true
+explosiveness = 1.0
+direction = Vector3(0, 1, 0)
+initial_velocity_max = 4.0

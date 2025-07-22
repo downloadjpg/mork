@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://dj8ilmaibdb5t"]
+[gd_scene load_steps=7 format=3 uid="uid://dj8ilmaibdb5t"]
 
 [ext_resource type="Script" uid="uid://bodluwhnlb5o8" path="res://weapons/weapon.gd" id="1_nisn2"]
+[ext_resource type="PackedScene" uid="uid://cjsq5tx4npf2j" path="res://weapons/projectiles/sword_slash.tscn" id="2_nisn2"]
 [ext_resource type="Texture2D" uid="uid://cl2pcjwx4h1pj" path="res://assets/textures/weapons/greatsword1.png" id="2_oivwf"]
 
 [sub_resource type="Animation" id="Animation_oivwf"]
@@ -42,6 +43,7 @@ _data = {
 
 [node name="Sword" type="Node3D"]
 script = ExtResource("1_nisn2")
+projectile_scene = ExtResource("2_nisn2")
 projectile_speed = 20.0
 metadata/_custom_type_script = "uid://bodluwhnlb5o8"
 

@@ -7,6 +7,7 @@ class_name Weapon
 @export var projectile_speed := 5.0
 
 @onready var spawn_position = $ProjectileSpawnPosition
+@onready var animation_player = $AnimationPlayer
 
 var current_ammo = initial_ammo
 
@@ -15,6 +16,11 @@ func fire_weapon(forward_direction):
 		return
 	if not projectile_scene:
 		return
+	if animation_player.is_playing():
+		return
+	if animation_player.has_animation("fire"):
+		animation_player.play("fire")
+		
 
 		# spawn a projectile and set its velocity
 	var projectile_instance = projectile_scene.instantiate()

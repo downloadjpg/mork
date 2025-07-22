@@ -8,16 +8,20 @@ class_name Enemy
 @export var detection_range := 10.0
 @export var attack_range := 1.0
 
+@onready var health = $Health
+@onready var animation_player = $AnimationPlayer
+
 enum State {WANDER, PURSUE}
 var current_state := State.WANDER
 
 var wander_target : Vector3 # global(?) position that the enemy wanders to
-
 # states:
 # wander, pursue
 
 func _ready():
 	player_detection.player_detected.connect(_on_player_detected)
+	health.connect("health_depleted", _on_health_depleted)
+	health.connect("health_changed", _on_health_changed)
 
 func _physics_process(delta: float) -> void:
 	state_process(delta)
@@ -77,3 +81,17 @@ func process_state_pursue(delta: float):
 
 func exit_state_pursue():
 	pass
+
+
+func _on_health_depleted():
+	animation_player.play("die")
+	await animation_player.animation_finished
+	queue_free()
+
+func _on_health_changed(value):
+	if health.health <= 0:
+		return
+	if value > 0:
+		return
+	if animation_player and animation_player.has_animation("hurt"):
+			animation_player.play("hurt")

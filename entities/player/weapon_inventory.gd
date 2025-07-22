@@ -19,6 +19,7 @@ var held_weapon_idx = 0 :
 func add_to_inventory(weapon_scene : PackedScene):
 	var weapon = weapon_scene.instantiate()
 	add_child(weapon)
+	held_weapon = weapon
 
 
 

@@ -1,24 +1,20 @@
 [gd_scene load_steps=10 format=3 uid="uid://bh8jygorf0gkj"]
 
-[ext_resource type="PackedScene" uid="uid://dj8ilmaibdb5t" path="res://weapons/sword.tscn" id="2_687qm"]
 [ext_resource type="PackedScene" uid="uid://bhx0kw633ii6j" path="res://entities/player/player.tscn" id="2_tsgde"]
-[ext_resource type="PackedScene" uid="uid://cyy04ts8ffma4" path="res://weapons/crossbow.tscn" id="3_lmpr0"]
 [ext_resource type="PackedScene" uid="uid://bh6vgr4s68wy3" path="res://entities/chest/chest.tscn" id="3_pmfem"]
 [ext_resource type="PackedScene" uid="uid://1vh0v16l8qpl" path="res://entities/environment/door.tscn" id="4_w32yo"]
+[ext_resource type="PackedScene" uid="uid://dgslrqoxy2hxp" path="res://entities/rat/rat.tscn" id="5_712nc"]
 [ext_resource type="MeshLibrary" uid="uid://deotmgceyduke" path="res://mesh_library/mesh_library.tres" id="5_i8ckm"]
 [ext_resource type="Texture2D" uid="uid://c4u1l7y47qlb8" path="res://levels/level map#01.png" id="6_i8ckm"]
 [ext_resource type="PackedScene" uid="uid://cbb1om3gr4f6o" path="res://entities/environment/torch.tscn" id="7_vons5"]
-[ext_resource type="PackedScene" uid="uid://dencplf0hqwdq" path="res://entities/pickups/weapon_pickup.tscn" id="8_legw5"]
+[ext_resource type="PackedScene" uid="uid://bmfk8w3q7af1c" path="res://entities/pickups/sword_pickup.tscn" id="8_687qm"]
+[ext_resource type="PackedScene" uid="uid://dencplf0hqwdq" path="res://entities/pickups/crossbow_pickup.tscn" id="8_legw5"]
 
 [node name="World" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("2_tsgde")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.48339, -1.94514, -6.73562)
 metadata/_edit_group_ = true
-
-[node name="Sword" parent="Player/Camera3D/WeaponInventory" index="0" instance=ExtResource("2_687qm")]
-
-[node name="Crossbow" parent="Player/Camera3D/WeaponInventory" index="1" instance=ExtResource("3_lmpr0")]
 
 [node name="Chest" parent="." instance=ExtResource("3_pmfem")]
 transform = Transform3D(-0.17186, 0, -0.985121, 0, 1, 0, 0.985121, 0, -0.17186, -1.62529, -1, -1.54222)
@@ -59,8 +55,26 @@ transform = Transform3D(-0.866025, -0.5, -8.74228e-08, -0.5, 0.866025, 0, 7.5710
 [node name="Torch3" parent="Decorations" instance=ExtResource("7_vons5")]
 transform = Transform3D(-0.866025, -0.5, -8.74228e-08, -0.5, 0.866025, 0, 7.57103e-08, 4.37114e-08, -1, -4.20711, 0.569674, -13.4921)
 
+[node name="Torch5" parent="Decorations" instance=ExtResource("7_vons5")]
+transform = Transform3D(0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0, 1, -7.80711, 0.569674, -1.43211)
+
+[node name="Torch6" parent="Decorations" instance=ExtResource("7_vons5")]
+transform = Transform3D(0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0, 1, -7.80711, 0.569674, -5.43206)
+
+[node name="Torch7" parent="Decorations" instance=ExtResource("7_vons5")]
+transform = Transform3D(-0.866025, -0.5, -8.74228e-08, -0.5, 0.866025, 0, 7.57103e-08, 4.37114e-08, -1, -4.20711, 0.569674, -1.43211)
+
+[node name="Torch8" parent="Decorations" instance=ExtResource("7_vons5")]
+transform = Transform3D(-0.866025, -0.5, -8.74228e-08, -0.5, 0.866025, 0, 7.57103e-08, 4.37114e-08, -1, -4.20711, 0.569674, -5.43206)
+
 [node name="CrossbowPickup" parent="." instance=ExtResource("8_legw5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.04913, -1.26029, -19.9824)
 pickup_message = "You pick up a crossbow. Medieval."
+
+[node name="SwordPickup" parent="." instance=ExtResource("8_687qm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.06954, -1.45835, -11.3205)
+
+[node name="Rat" parent="." instance=ExtResource("5_712nc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.08344, -1.3984, -8.25787)
 
 [editable path="Player"]
