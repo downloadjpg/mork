@@ -23,6 +23,6 @@ func update_health():
 func update_ammo():
 	ammo.text = "-/-"
 	var weapon = player.weapon_inventory.held_weapon
-	if not weapon:
+	if not weapon or weapon.infinite_ammo:
 		return
 	ammo.text = "%d/%d" % [weapon.current_ammo, weapon.max_ammo]

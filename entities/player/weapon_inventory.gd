@@ -7,6 +7,8 @@ var held_weapon : Weapon :
 		held_weapon = value
 		held_weapon_idx = value.get_index()
 	get:
+		if get_child_count() == 0:
+			return null
 		return get_child(held_weapon_idx)
 var held_weapon_idx = 0 :
 	set(value):

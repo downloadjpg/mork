@@ -92,8 +92,8 @@ func _on_health_depleted():
 	queue_free()
 
 func _on_health_changed(value):
-	if health.health <= 0:
-		return
+	#if health.health <= 0:
+		#return
 	if value > 0:
 		return
 	if animation_player and animation_player.has_animation("hurt"):

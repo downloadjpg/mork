@@ -45,6 +45,7 @@ _data = {
 script = ExtResource("1_nisn2")
 projectile_scene = ExtResource("2_nisn2")
 projectile_speed = 20.0
+infinite_ammo = true
 metadata/_custom_type_script = "uid://bodluwhnlb5o8"
 
 [node name="Sprite3D" type="Sprite3D" parent="."]

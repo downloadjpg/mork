@@ -5,6 +5,7 @@ class_name Weapon
 @export var max_ammo := 100
 @export var initial_ammo := 10
 @export var projectile_speed := 5.0
+@export var infinite_ammo := false
 
 @onready var spawn_position = $ProjectileSpawnPosition
 @onready var animation_player = $AnimationPlayer
@@ -12,7 +13,7 @@ class_name Weapon
 var current_ammo = initial_ammo
 
 func fire_weapon(forward_direction):
-	if current_ammo <= 0:
+	if current_ammo <= 0 and not infinite_ammo:
 		return
 	if not projectile_scene:
 		return
