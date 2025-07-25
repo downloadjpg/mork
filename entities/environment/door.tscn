@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://1vh0v16l8qpl"]
+[gd_scene load_steps=8 format=3 uid="uid://1vh0v16l8qpl"]
 
 [ext_resource type="Script" uid="uid://bnlqwj00vr36c" path="res://entities/environment/door.gd" id="1_i6j8m"]
 [ext_resource type="PackedScene" uid="uid://dx4017vqacx02" path="res://components/interaction_area.tscn" id="2_rk5sa"]
 [ext_resource type="Texture2D" uid="uid://s7764nfhy8t" path="res://assets/textures/environment/dngn_closed_door.png" id="3_4rpcy"]
 [ext_resource type="Texture2D" uid="uid://g864db8n58e3" path="res://assets/textures/environment/dngn_open_door.png" id="4_rk5sa"]
+[ext_resource type="AudioStream" uid="uid://ygicltcbx8xe" path="res://assets/sounds/door_locked.wav" id="5_juxxh"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rk5sa"]
 size = Vector3(2, 2, 0.2)
@@ -43,3 +44,15 @@ pixel_size = 0.0625
 shaded = true
 texture_filter = 0
 texture = ExtResource("4_rk5sa")
+
+[node name="LockedSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("5_juxxh")
+bus = &"SFX"
+
+[node name="OpenSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("5_juxxh")
+bus = &"SFX"
+
+[node name="CloseSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("5_juxxh")
+bus = &"SFX"
