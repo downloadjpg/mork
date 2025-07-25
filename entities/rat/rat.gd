@@ -15,6 +15,7 @@ enum State {WANDER, PURSUE}
 var current_state := State.WANDER
 
 var wander_target : Vector3 # global(?) position that the enemy wanders to
+var pursue_target : Node3D
 # states:
 # wander, pursue
 
@@ -24,67 +25,24 @@ func _ready():
 	health.connect("health_changed", _on_health_changed)
 
 func _physics_process(delta: float) -> void:
-	state_process(delta)
+	if pursue_target:
+		process_state_pursue(delta)
 
 func _on_player_detected(player: Player):
-	print('gabba goo!')
+	pursue_target = player
 
-func state_enter():
-	match current_state:
-		State.WANDER:
-			enter_state_wander()
-		State.PURSUE:
-			enter_state_pursue()
-
-func state_exit():
-	match current_state:
-		State.WANDER:
-			exit_state_wander()
-		State.PURSUE:
-			exit_state_pursue()
-
-func state_process(delta: float):
-	match current_state:
-		State.WANDER:
-			process_state_wander(delta)
-		State.PURSUE:
-			process_state_pursue(delta)
-
-
-func enter_state_wander():
-	pass
-
-func process_state_wander(delta: float):
-	# if our timer has expired, pick a new position
-	if not wander_target or new_wander_target_timer.time_left == 0:
-		print('new loc')
-		# select a new wander position, start the timer
-		var direction = Vector3(randf(), 0, randf())
-		var length = randf_range(1, 5)
-		wander_target = position + direction * length
-		new_wander_target_timer.start()
-	# move towards our target position
-	var dir = (wander_target - position).normalized()
-	velocity = move_speed * dir
-	velocity += get_gravity()
-	move_and_slide()
-	
-
-func exit_state_wander():
-	pass
-
-
-func enter_state_pursue():
-	pass
 
 func process_state_pursue(delta: float):
+	# move towards target!
+	if not pursue_target:
+		printerr('no pursue target!')
+		return
+	
+	var dir = (pursue_target.position - position).normalized()
+	velocity = move_speed * dir
+	
 	velocity += get_gravity()
 	move_and_slide()
-	pass
-
-func exit_state_pursue():
-	pass
-
 
 func _on_health_depleted():
 	animation_player.play("die")
