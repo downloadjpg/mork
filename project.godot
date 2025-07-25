@@ -19,6 +19,7 @@ config/icon="uid://b6c44fv07n2i1"
 [autoload]
 
 GameManager="*res://game_manager.gd"
+Events="*res://events.gd"
 
 [display]
 

@@ -1,8 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dj8ilmaibdb5t"]
+[gd_scene load_steps=8 format=3 uid="uid://dj8ilmaibdb5t"]
 
-[ext_resource type="Script" uid="uid://bodluwhnlb5o8" path="res://weapons/weapon.gd" id="1_nisn2"]
-[ext_resource type="PackedScene" uid="uid://cjsq5tx4npf2j" path="res://weapons/projectiles/sword_slash.tscn" id="2_nisn2"]
+[ext_resource type="Script" uid="uid://cg847ib2c7s2y" path="res://weapons/sword.gd" id="1_oivwf"]
 [ext_resource type="Texture2D" uid="uid://cl2pcjwx4h1pj" path="res://assets/textures/weapons/greatsword1.png" id="2_oivwf"]
+[ext_resource type="Script" uid="uid://bmbe16sjosqdw" path="res://components/hitbox.gd" id="3_nisn2"]
 
 [sub_resource type="Animation" id="Animation_oivwf"]
 length = 0.001
@@ -18,9 +18,21 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector3(3.51583e-08, 2.63037, -2.41184)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HitBox/CollisionShape3D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_nisn2"]
-resource_name = "fire"
+resource_name = "swing"
 length = 0.600003
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -34,18 +46,31 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector3(3.51583e-08, 2.63037, -2.41184), Vector3(0.31765, 2.42252, -3.4767), Vector3(3.51583e-08, 2.63037, -2.41184)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HitBox/CollisionShape3D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.433333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5ogyc"]
 _data = {
 &"RESET": SubResource("Animation_oivwf"),
-&"fire": SubResource("Animation_nisn2")
+&"swing": SubResource("Animation_nisn2")
 }
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_5ogyc"]
+
 [node name="Sword" type="Node3D"]
-script = ExtResource("1_nisn2")
-projectile_scene = ExtResource("2_nisn2")
-projectile_speed = 20.0
+script = ExtResource("1_oivwf")
 infinite_ammo = true
+projectile_speed = 20.0
 metadata/_custom_type_script = "uid://bodluwhnlb5o8"
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
@@ -54,11 +79,17 @@ offset = Vector2(7.8, 7.785)
 texture_filter = 0
 texture = ExtResource("2_oivwf")
 
-[node name="ProjectileSpawnPosition" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.146293, 0, -0.787216)
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 deterministic = true
 libraries = {
 &"": SubResource("AnimationLibrary_5ogyc")
 }
+
+[node name="HitBox" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.3)
+script = ExtResource("3_nisn2")
+metadata/_custom_type_script = "uid://bmbe16sjosqdw"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitBox"]
+shape = SubResource("BoxShape3D_5ogyc")
+disabled = true

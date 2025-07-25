@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dgslrqoxy2hxp"]
+[gd_scene load_steps=17 format=3 uid="uid://dgslrqoxy2hxp"]
 
 [ext_resource type="Texture2D" uid="uid://b03aoxeib0ss7" path="res://assets/textures/monsters/grey_rat.png" id="1_3elot"]
 [ext_resource type="Script" uid="uid://c2k4ss6ppyo0s" path="res://entities/rat/rat.gd" id="1_ykyuw"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://cnete75ch7o2c" path="res://components/hurtbox.gd" id="4_dt4dc"]
 [ext_resource type="PackedScene" uid="uid://chqy4xa7xt1an" path="res://components/player_detection.tscn" id="5_dt4dc"]
 [ext_resource type="PackedScene" uid="uid://iyq6fj27vvpv" path="res://effects/death_particle.tscn" id="6_b6v2d"]
+[ext_resource type="Script" uid="uid://dd4vcmtucc07g" path="res://components/particle_emitter.gd" id="7_4mcxe"]
 [ext_resource type="PackedScene" uid="uid://byn4vgdaavyqd" path="res://effects/blood_particle.tscn" id="7_5texh"]
 [ext_resource type="Script" uid="uid://bmbe16sjosqdw" path="res://components/hitbox.gd" id="8_m16py"]
 
@@ -41,30 +42,6 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector3(1, 1, 1)]
 }
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("DeathParticle:emitting")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("BloodParticle:emitting")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
 
 [sub_resource type="Animation" id="Animation_5texh"]
 resource_name = "die"
@@ -76,22 +53,24 @@ tracks/0/path = NodePath("Sprite3D:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.05, 0.433333),
+"times": PackedFloat32Array(0.0666667, 0.433333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(1, 1, 1), Vector3(0.01, 0.01, 0.01)]
 }
-tracks/1/type = "value"
+tracks/1/type = "method"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("DeathParticle:emitting")
+tracks/1/path = NodePath("ParticleEmitter")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
+"times": PackedFloat32Array(0.0333333),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"values": [{
+"args": ["death"],
+"method": &"spawn"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_dt4dc"]
@@ -109,17 +88,19 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(1, 0.31751, 0.280189, 1), Color(1, 1, 1, 1)]
 }
-tracks/1/type = "value"
+tracks/1/type = "method"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("BloodParticle:emitting")
+tracks/1/path = NodePath("ParticleEmitter")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"values": [{
+"args": ["blood"],
+"method": &"spawn"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5texh"]
@@ -184,10 +165,11 @@ metadata/_custom_type_script = "uid://bmbe16sjosqdw"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("SphereShape3D_m16py")
 
-[node name="DeathParticle" parent="." instance=ExtResource("6_b6v2d")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-direction = Vector3(0, 1, 0)
-initial_velocity_max = 4.0
-
-[node name="BloodParticle" parent="." instance=ExtResource("7_5texh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.473864, 0)
+[node name="ParticleEmitter" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.478008, 0)
+script = ExtResource("7_4mcxe")
+particle_scene = Dictionary[String, PackedScene]({
+"blood": ExtResource("7_5texh"),
+"death": ExtResource("6_b6v2d")
+})
+metadata/_custom_type_script = "uid://dd4vcmtucc07g"
