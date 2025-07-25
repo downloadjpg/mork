@@ -2,7 +2,6 @@ extends CharacterBody3D
 class_name Enemy
 
 @onready var player_detection : PlayerDetection = $PlayerDetection 
-@onready var new_wander_target_timer : Timer = $WanderTimer
 
 @export var move_speed := 10.0
 @export var detection_range := 10.0
