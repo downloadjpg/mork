@@ -8,6 +8,7 @@ var mouse_sensitivity = 0.0025
 
 @onready var health: Health = $Health
 @onready var weapon_inventory : WeaponInventory = $Camera3D/WeaponInventory
+@onready var footstep_sound : AudioStreamPlayer3D = $FootstepSound
 
 func _ready():
 	set_player_status()
@@ -18,6 +19,12 @@ func _physics_process(delta):
 	var movement_dir = transform.basis * Vector3(input.x, 0, input.y)
 	velocity.x = movement_dir.x * speed
 	velocity.z = movement_dir.z * speed
+	
+	if (Vector2(velocity.x, velocity.z).length()) > 0 and is_on_floor():
+		if !footstep_sound.playing:
+			footstep_sound.play()
+	else:
+		footstep_sound.stop()
 
 	move_and_slide()
 	if is_on_floor() and Input.is_action_just_pressed("jump"):

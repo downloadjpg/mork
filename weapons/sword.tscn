@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://dj8ilmaibdb5t"]
+[gd_scene load_steps=9 format=3 uid="uid://dj8ilmaibdb5t"]
 
 [ext_resource type="Script" uid="uid://cg847ib2c7s2y" path="res://weapons/sword.gd" id="1_oivwf"]
 [ext_resource type="Texture2D" uid="uid://cl2pcjwx4h1pj" path="res://assets/textures/weapons/greatsword1.png" id="2_oivwf"]
 [ext_resource type="Script" uid="uid://bmbe16sjosqdw" path="res://components/hitbox.gd" id="3_nisn2"]
+[ext_resource type="AudioStream" uid="uid://c0vsreui8bh31" path="res://assets/sounds/woosh.wav" id="4_5ogyc"]
 
 [sub_resource type="Animation" id="Animation_oivwf"]
 length = 0.001
@@ -93,3 +94,6 @@ metadata/_custom_type_script = "uid://bmbe16sjosqdw"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HitBox"]
 shape = SubResource("BoxShape3D_5ogyc")
 disabled = true
+
+[node name="SwooshSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_5ogyc")
