@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dgslrqoxy2hxp"]
+[gd_scene load_steps=16 format=3 uid="uid://dgslrqoxy2hxp"]
 
 [ext_resource type="Texture2D" uid="uid://b03aoxeib0ss7" path="res://assets/textures/monsters/grey_rat.png" id="1_3elot"]
 [ext_resource type="Script" uid="uid://c2k4ss6ppyo0s" path="res://entities/rat/rat.gd" id="1_ykyuw"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://chqy4xa7xt1an" path="res://components/player_detection.tscn" id="5_dt4dc"]
 [ext_resource type="PackedScene" uid="uid://iyq6fj27vvpv" path="res://effects/death_particle.tscn" id="6_b6v2d"]
 [ext_resource type="PackedScene" uid="uid://byn4vgdaavyqd" path="res://effects/blood_particle.tscn" id="7_5texh"]
+[ext_resource type="Script" uid="uid://bmbe16sjosqdw" path="res://components/hitbox.gd" id="8_m16py"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_712nc"]
 height = 1.00541
@@ -87,7 +88,7 @@ tracks/1/path = NodePath("DeathParticle:emitting")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.0333333),
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
@@ -128,6 +129,9 @@ _data = {
 &"hurt": SubResource("Animation_dt4dc")
 }
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_m16py"]
+radius = 0.6
+
 [node name="Rat" type="CharacterBody3D"]
 script = ExtResource("1_ykyuw")
 move_speed = 1.0
@@ -144,18 +148,16 @@ texture = ExtResource("1_3elot")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.485192, 0)
 shape = SubResource("CapsuleShape3D_712nc")
 
-[node name="RayCast3D" type="RayCast3D" parent="."]
-target_position = Vector3(0, 0, -1.5)
-
 [node name="Health" type="Node" parent="."]
 script = ExtResource("3_yvjy2")
 metadata/_custom_type_script = "uid://c7ykkd5yi6gjv"
 
-[node name="HurtBox" type="Area3D" parent="." node_paths=PackedStringArray("health")]
+[node name="HurtBox" type="Area3D" parent="." node_paths=PackedStringArray("health", "ignored_source")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 visible = false
 script = ExtResource("4_dt4dc")
 health = NodePath("../Health")
+ignored_source = NodePath("..")
 metadata/_custom_type_script = "uid://cnete75ch7o2c"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HurtBox"]
@@ -172,6 +174,15 @@ one_shot = true
 libraries = {
 &"": SubResource("AnimationLibrary_5texh")
 }
+
+[node name="HitBox" type="Area3D" parent="." node_paths=PackedStringArray("damage_source")]
+script = ExtResource("8_m16py")
+damage_source = NodePath("..")
+metadata/_custom_type_script = "uid://bmbe16sjosqdw"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("SphereShape3D_m16py")
 
 [node name="DeathParticle" parent="." instance=ExtResource("6_b6v2d")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)

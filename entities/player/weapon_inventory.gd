@@ -1,6 +1,8 @@
 extends Node3D
 class_name WeaponInventory
 
+@export var damage_source : Node3D
+
 var held_weapon : Weapon :
 	set(value):
 		# this fails if held weapon is set to something that isn't a child. don't know how to check for that
@@ -19,7 +21,8 @@ var held_weapon_idx = 0 :
 		held_weapon.visible = true
 
 func add_to_inventory(weapon_scene : PackedScene):
-	var weapon = weapon_scene.instantiate()
+	var weapon : Weapon = weapon_scene.instantiate()
+	weapon.damage_source = damage_source
 	add_child(weapon)
 	held_weapon = weapon
 
