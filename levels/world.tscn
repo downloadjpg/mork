@@ -20,7 +20,7 @@ metadata/_edit_group_ = true
 transform = Transform3D(-0.17186, 0, -0.985121, 0, 1, 0, 0.985121, 0, -0.17186, -1.62529, -1, -1.54222)
 
 [node name="Door" parent="." instance=ExtResource("4_w32yo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9317, -2, -16.8497)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.0317, -2, -16.8497)
 
 [node name="RoofGridMap" type="GridMap" parent="."]
 mesh_library = ExtResource("5_i8ckm")

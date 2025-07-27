@@ -2,16 +2,19 @@ extends Panel
 
 var player : Player = null
 
-@onready var health : Label = $HBoxContainer/Health
-@onready var ammo : Label = $HBoxContainer/Ammo
+@onready var health : Label = $MarginContainer/HBoxContainer/HealthHBox/Health
+@onready var ammo : Label = $MarginContainer/HBoxContainer/Ammo
+@onready var keys : Label = $MarginContainer/HBoxContainer/KeyHBox/KeyCounter
 
 func _process(delta: float) -> void:
 	if player == null:
 		player = GameManager.player
 		return
 	
+	# TODO: refactor this so it isn't called every frame
 	update_health()
 	update_ammo()
+	update_keys()
 
 
 func update_health():
@@ -26,3 +29,7 @@ func update_ammo():
 	if not weapon or weapon.infinite_ammo:
 		return
 	ammo.text = "%d/%d" % [weapon.current_ammo, weapon.max_ammo]
+
+func update_keys():
+	var key_count : int = GameManager.inventory["key"]
+	keys.text = "%d" % key_count
