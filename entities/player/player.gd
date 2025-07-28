@@ -11,8 +11,7 @@ var mouse_sensitivity = 0.0025
 @onready var footstep_sound : AudioStreamPlayer3D = $FootstepSound
 
 func _ready():
-	set_player_status()
-
+	Events.player_spawn.emit(self)
 func _physics_process(delta):
 	velocity.y += -gravity * delta
 	var input = Input.get_vector("left", "right", "forward", "back")
@@ -38,10 +37,6 @@ func _input(event):
 
 func kill():
 	get_tree().reload_current_scene()
-
-func set_player_status():
-	#get_tree().call_group("enemies", "set_player", self)
-	GameManager.set_player(self)
 
 func pickup_weapon(weapon_scene: PackedScene):
 	weapon_inventory.add_to_inventory(weapon_scene)
