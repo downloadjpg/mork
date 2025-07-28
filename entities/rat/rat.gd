@@ -10,8 +10,8 @@ class_name Enemy
 @onready var health = $Health
 @onready var animation_player = $AnimationPlayer
 
-enum State {WANDER, PURSUE}
-var current_state := State.WANDER
+enum State {IDLE, PURSUE}
+var current_state := State.IDLE
 
 var wander_target : Vector3 # global(?) position that the enemy wanders to
 var pursue_target : Node3D
@@ -20,16 +20,19 @@ var pursue_target : Node3D
 
 func _ready():
 	player_detection.player_detected.connect(_on_player_detected)
+	player_detection.player_lost.connect(_on_player_lost)
 	health.connect("health_depleted", _on_health_depleted)
 	health.connect("health_changed", _on_health_changed)
 
 func _physics_process(delta: float) -> void:
-	if pursue_target:
-		process_state_pursue(delta)
-
-func _on_player_detected(player: Player):
-	pursue_target = player
-
+	match current_state:
+		State.IDLE:
+			pass
+		State.PURSUE:
+			process_state_pursue(delta)
+	
+	velocity += get_gravity()
+	move_and_slide()
 
 func process_state_pursue(delta: float):
 	# move towards target!
@@ -39,10 +42,17 @@ func process_state_pursue(delta: float):
 	
 	var dir = (pursue_target.position - position).normalized()
 	velocity = move_speed * dir
-	
-	velocity += get_gravity()
-	move_and_slide()
 
+func _on_player_detected(player: Player):
+	pursue_target = player
+	current_state = State.PURSUE
+
+func _on_player_lost():
+	print('player lost')
+	velocity = Vector3.ZERO
+	current_state = State.IDLE
+
+	
 func _on_health_depleted():
 	animation_player.play("die")
 	await animation_player.animation_finished

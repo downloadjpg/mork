@@ -1,17 +1,20 @@
 extends CharacterBody3D
 class_name Player
 
-var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
-var speed = 5
-var jump_speed = 5
-var mouse_sensitivity = 0.0025
+@export var speed = 5
+@export var jump_speed = 5
+@export var mouse_sensitivity = 0.0025
 
 @onready var health: Health = $Health
-@onready var weapon_inventory : WeaponInventory = $Camera3D/WeaponInventory
+@onready var weapon_inventory : WeaponInventory = $WeaponInventory
 @onready var footstep_sound : AudioStreamPlayer3D = $FootstepSound
 
+var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+
 func _ready():
+	health.health_depleted.connect(_on_health_depleted)
 	Events.player_spawn.emit(self)
+
 func _physics_process(delta):
 	velocity.y += -gravity * delta
 	var input = Input.get_vector("left", "right", "forward", "back")
@@ -40,4 +43,6 @@ func kill():
 
 func pickup_weapon(weapon_scene: PackedScene):
 	weapon_inventory.add_to_inventory(weapon_scene)
-		
+	
+func _on_health_depleted():
+	Events.player_death.emit()
