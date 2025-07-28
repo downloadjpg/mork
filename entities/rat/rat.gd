@@ -54,6 +54,7 @@ func _on_player_lost():
 
 	
 func _on_health_depleted():
+	$HitBox/CollisionShape3D.set_deferred("disabled", true)
 	animation_player.play("die")
 	await animation_player.animation_finished
 	queue_free()

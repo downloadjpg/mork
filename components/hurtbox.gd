@@ -5,7 +5,7 @@ signal received_damage(damage: int)
 
 @export var health: Health
 @export var ignored_source: Node3D
-@export_range(0, 2) var invulnerability_time: float = 2.0
+@export_range(0, 2) var invulnerability_time: float = 0.8
 
 func _ready() -> void:
 	connect("area_entered", _on_area_entered)
@@ -23,12 +23,15 @@ func take_damage(hitbox: HitBox):
 	health.health -= hitbox.damage
 	received_damage.emit(hitbox.damage)
 	# stupid
-	monitorable = false
-	monitoring = false
+	set_deferred("monitoring", false)
+	set_deferred("monitorable", false)
 	await get_tree().create_timer(invulnerability_time).timeout
 	
-	monitoring = true
-	monitorable = true
+	set_deferred("monitoring", true)
+	set_deferred("monitorable", true)
+	call_deferred("check_for_hits")
+	
+func check_for_hits():
 	for area in get_overlapping_areas():
 		_on_area_entered(area)
 		
