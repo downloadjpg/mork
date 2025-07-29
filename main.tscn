@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://7mgcejtwwy0m"]
+[gd_scene load_steps=10 format=3 uid="uid://7mgcejtwwy0m"]
 
 [ext_resource type="PackedScene" uid="uid://bh8jygorf0gkj" path="res://levels/world.tscn" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://cpopv2a3xr0qx" path="res://ui/message_log.gd" id="2_0xm2m"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://7vm4e5lol3te" path="res://assets/textures/key.png" id="4_7mycd"]
 [ext_resource type="Texture2D" uid="uid://bk3va4pnx1g06" path="res://assets/textures/stupid_vignette.png" id="6_7mycd"]
 [ext_resource type="Script" uid="uid://brpimpgkv53yc" path="res://ui/hurt_effect.gd" id="7_272bh"]
+[ext_resource type="PackedScene" uid="uid://d016i2d4ipdiu" path="res://entities/rat/juan.tscn" id="8_5vw27"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0xm2m"]
 bg_color = Color(0, 0, 0, 1)
@@ -108,3 +109,6 @@ offset_right = 720.0
 offset_bottom = 432.0
 texture = ExtResource("6_7mycd")
 script = ExtResource("7_272bh")
+
+[node name="Rat" parent="." instance=ExtResource("8_5vw27")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.95729, -2, -0.958673)
