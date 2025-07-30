@@ -4,7 +4,6 @@ class_name PlayerDetection
 signal player_detected(player: Player)
 signal player_lost
 
-@onready var detection_bark : AudioStreamPlayer3D = $DetectionBark
 
 func _ready():
 	body_exited.connect(_on_body_exited)
@@ -13,14 +12,13 @@ func _ready():
 func _on_body_entered(body):
 	var player := body as Player
 	if not player:
-		printerr("Something other than a player detected by PlayerDetection")
+		#printerr("Something other than a player detected by PlayerDetection")
 		return
-	detection_bark.play()
 	emit_signal("player_detected", player)
 
 func _on_body_exited(body):
 	var player := body as Player
 	if not player:
-		printerr("Something other than a player detected by PlayerDetection")
+		#printerr("Something other than a player detected by PlayerDetection")
 		return
 	emit_signal("player_lost")
