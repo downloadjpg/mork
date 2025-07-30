@@ -65,7 +65,7 @@ func _on_player_detected(player: Player):
 	attack_target = player
 	#play wake sound
 
-func _on_player_lost(player: Player):
+func _on_player_lost():
 	state = State.IDLE
 	attack_target = null
 
