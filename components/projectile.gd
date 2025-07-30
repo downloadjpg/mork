@@ -14,12 +14,14 @@ func _ready() -> void:
 	lifetime_timer.timeout.connect(_on_lifetime_timeout)
 	add_child(lifetime_timer)
 	lifetime_timer.start(lifetime)
+	$HitBox.damage_source = damage_source
 	align_hitboxes()
 
 func align_hitboxes():
 	for child in get_children():
 		if child is HitBox:
 			child.damage_source = damage_source
+	#print('this is my damage source;', damage_source)
 
 
 func _on_lifetime_timeout():

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://ja716y7c8s6x"]
+[gd_scene load_steps=17 format=3 uid="uid://ja716y7c8s6x"]
 
 [ext_resource type="Script" uid="uid://btaocib3f873c" path="res://entities/enemy.gd" id="1_hv8de"]
 [ext_resource type="Texture2D" uid="uid://cd4v07i7eo4p1" path="res://assets/textures/monsters/skeleton_humanoid_large.png" id="2_nbd2o"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://dd4vcmtucc07g" path="res://components/particle_emitter.gd" id="6_011bx"]
 [ext_resource type="PackedScene" uid="uid://byn4vgdaavyqd" path="res://effects/blood_particle.tscn" id="7_y3uxs"]
 [ext_resource type="PackedScene" uid="uid://iyq6fj27vvpv" path="res://effects/death_particle.tscn" id="8_y3uxs"]
+[ext_resource type="PackedScene" uid="uid://cyy04ts8ffma4" path="res://weapons/crossbow.tscn" id="9_c8lay"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_lx80n"]
 radius = 1.0
@@ -112,9 +113,9 @@ _data = {
 &"hurt": SubResource("Animation_dt4dc")
 }
 
-[node name="EnemyTest" type="CharacterBody3D"]
+[node name="EnemyTest" type="CharacterBody3D" node_paths=PackedStringArray("weapon")]
 script = ExtResource("1_hv8de")
-attack_range = null
+weapon = NodePath("Crossbow")
 texture = ExtResource("2_nbd2o")
 pixel_size = 0.063
 metadata/_custom_type_script = "uid://btaocib3f873c"
@@ -152,8 +153,6 @@ metadata/_custom_type_script = "uid://dyw212ookfrx4"
 shape = SubResource("SphereShape3D_nbd2o")
 debug_color = Color(0.282447, 0.7, 0.267001, 0.094)
 
-[node name="Weapon" type="Node" parent="."]
-
 [node name="ParticleEmitter" type="Node3D" parent="."]
 script = ExtResource("6_011bx")
 particle_scene = Dictionary[String, PackedScene]({
@@ -166,3 +165,7 @@ metadata/_custom_type_script = "uid://dd4vcmtucc07g"
 libraries = {
 &"": SubResource("AnimationLibrary_5texh")
 }
+
+[node name="Crossbow" parent="." node_paths=PackedStringArray("damage_source") instance=ExtResource("9_c8lay")]
+infinite_ammo = true
+damage_source = NodePath("..")

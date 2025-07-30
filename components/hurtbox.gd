@@ -17,6 +17,9 @@ func _on_area_entered(hitbox) -> void:
 	hitbox = hitbox as HitBox # ugh
 	if hitbox.damage_source == ignored_source:
 		return
+	else:
+		print('hitbox_source: ', hitbox.damage_source)
+		print('hurtbox_source: ', ignored_source)
 	take_damage(hitbox)
 
 func take_damage(hitbox: HitBox):

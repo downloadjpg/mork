@@ -6,6 +6,7 @@ class_name Enemy extends CharacterBody3D
 @export var move_speed: float = 5.0
 @export var attack_damage: float = 25.0
 @export var attack_range: float = 2.0
+@export var weapon: Weapon
 
 @export_group("Sound")
 @export var wake_sound: AudioStream
@@ -34,7 +35,7 @@ var state = State.IDLE
 var attack_target : Node3D = null
 
 func attack():
-	pass
+	weapon.fire_weapon(-basis.z)
 
 func _ready():
 	health_component.connect("health_changed", _on_health_changed)
