@@ -10,7 +10,7 @@ signal ammo_changed(current, maximum)
 @export var weapon_name : String = "Generic Weapon"
 @export var damage: int = 2
 @export var fire_rate : float = 0.5 # Seconds between shots
-@export var auto_fire: bool = false # Hold to fire vs tap
+@export var auto_fire: bool = false # Hold wto fire vs tap
 
 @export_group("Ammunition")
 @export var uses_ammo: bool = false
@@ -25,7 +25,7 @@ signal ammo_changed(current, maximum)
 @export var fire_sound: AudioStream
 @export var empty_sound: AudioStream
 
-#@onready var muzzle_point = $MuzzlePoint
+
 @onready var audio_player = $AudioStreamPlayer3D
 @onready var animation_player = $AnimationPlayer
 

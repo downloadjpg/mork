@@ -11,7 +11,7 @@ extends Area3D
 		# Otherwise, check if our parent has an owner_entity property
 		var current_node = get_parent()
 		while current_node != null:
-			if current_node.has_variable("damage_source") and current_node.damage_source != null:
+			if current_node.get("damage_source") != null:
 				return current_node.damage_source
 			current_node = current_node.get_parent()
 		

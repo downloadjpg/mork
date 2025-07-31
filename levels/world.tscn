@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bh8jygorf0gkj"]
+[gd_scene load_steps=12 format=3 uid="uid://bh8jygorf0gkj"]
 
 [ext_resource type="PackedScene" uid="uid://bhx0kw633ii6j" path="res://entities/player/player.tscn" id="2_tsgde"]
 [ext_resource type="PackedScene" uid="uid://bh6vgr4s68wy3" path="res://entities/chest/chest.tscn" id="3_pmfem"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://c4u1l7y47qlb8" path="res://levels/level map#01.png" id="6_i8ckm"]
 [ext_resource type="PackedScene" uid="uid://cbb1om3gr4f6o" path="res://entities/environment/torch.tscn" id="7_vons5"]
 [ext_resource type="PackedScene" uid="uid://bmfk8w3q7af1c" path="res://entities/pickups/sword_pickup.tscn" id="8_687qm"]
+[ext_resource type="PackedScene" uid="uid://dencplf0hqwdq" path="res://entities/pickups/crossbow_pickup.tscn" id="8_legw5"]
 [ext_resource type="PackedScene" uid="uid://ja716y7c8s6x" path="res://entities/rat/enemy_test.tscn" id="12_wqmfy"]
 
 [node name="World" type="Node3D"]
@@ -90,5 +91,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.99886, -1.092, -11.1011)
 [node name="Player" parent="Entities" instance=ExtResource("2_tsgde")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.48339, -1.94514, -6.73562)
 metadata/_edit_group_ = true
+
+[node name="CrossbowPickup" parent="Entities" instance=ExtResource("8_legw5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.50222, -1.75056, -8.78073)
 
 [editable path="Entities/Player"]

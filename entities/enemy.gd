@@ -42,6 +42,9 @@ func _ready():
 	health_component.connect("health_depleted", _on_health_depleted)
 	player_detection.connect("player_detected", _on_player_detected)
 	player_detection.connect("player_lost", _on_player_lost)
+	
+	if weapon:
+		weapon.damage_source = self
 
 
 func _physics_process(delta: float) -> void:
