@@ -1,7 +1,7 @@
 extends Area3D
 class_name WeaponPickup
 
-@export var weapon_scene: PackedScene = preload("res://weapons/crossbow.tscn")
+@export var weapon_scene: PackedScene
 @export var pickup_message: String = "You pick up something strange..."
 
 @onready var pickup_sound = $PickupSound

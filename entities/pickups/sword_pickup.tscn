@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://doyaui233uwtd" path="res://entities/pickups/weapon_pickup.gd" id="1_i4eyl"]
 [ext_resource type="Script" uid="uid://dmse8q8nfu63v" path="res://entities/pickups/sine_float.gd" id="2_8tkg3"]
-[ext_resource type="PackedScene" uid="uid://dj8ilmaibdb5t" path="res://weapons/sword.tscn" id="2_qa840"]
+[ext_resource type="PackedScene" uid="uid://dj8ilmaibdb5t" path="res://weapons/sword/sword.tscn" id="2_qa840"]
 [ext_resource type="Texture2D" uid="uid://cl2pcjwx4h1pj" path="res://assets/textures/weapons/greatsword1.png" id="4_8tkg3"]
 [ext_resource type="AudioStream" uid="uid://dcvaem6n7awmh" path="res://assets/sounds/sword_shing.wav" id="5_qa840"]
 

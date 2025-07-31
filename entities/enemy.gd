@@ -30,12 +30,12 @@ class_name Enemy extends CharacterBody3D
 #@onready var brain = AIBrain.new()
 #@onready var movement_component = $MovementComponent
 
-enum State {IDLE, PURSUE}
+enum State {IDLE, PURSUE, DEAD}
 var state = State.IDLE
 var attack_target : Node3D = null
 
 func attack():
-	weapon.fire_weapon(-basis.z)
+	weapon.try_fire()
 
 func _ready():
 	health_component.connect("health_changed", _on_health_changed)
@@ -51,17 +51,22 @@ func _physics_process(delta: float) -> void:
 			# chill
 		State.PURSUE:
 			# Move towards target
+			weapon.look_at(attack_target.position)
 			var to_player = attack_target.position - position
-			if to_player.length() > attack_range:
+			if to_player.length() <= attack_range:
+				velocity = Vector3.ZERO
 				attack()
 			else:
 				var dir = to_player.normalized()
 				velocity = move_speed * dir
+		State.DEAD:
+			velocity = Vector3.ZERO
 	velocity += get_gravity()
 	move_and_slide()
 
 
 func _on_player_detected(player: Player):
+	print('eek!')
 	state = State.PURSUE
 	attack_target = player
 	#play wake sound
@@ -74,6 +79,7 @@ func _on_health_changed(delta):
 	animation_player.play("hurt")
 
 func _on_health_depleted():
+	state = State.DEAD
 	animation_player.play("die")
 	await animation_player.animation_finished
 	queue_free()

@@ -8,9 +8,10 @@
 [ext_resource type="Script" uid="uid://dd4vcmtucc07g" path="res://components/particle_emitter.gd" id="6_011bx"]
 [ext_resource type="PackedScene" uid="uid://byn4vgdaavyqd" path="res://effects/blood_particle.tscn" id="7_y3uxs"]
 [ext_resource type="PackedScene" uid="uid://iyq6fj27vvpv" path="res://effects/death_particle.tscn" id="8_y3uxs"]
-[ext_resource type="PackedScene" uid="uid://dj8ilmaibdb5t" path="res://weapons/sword/sword.tscn" id="9_c8lay"]
+[ext_resource type="PackedScene" uid="uid://cyy04ts8ffma4" path="res://weapons/projectiles/crossbow.tscn" id="9_c8lay"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_lx80n"]
+radius = 1.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_011bx"]
 radius = 1.0
@@ -114,7 +115,7 @@ _data = {
 
 [node name="EnemyTest" type="CharacterBody3D" node_paths=PackedStringArray("weapon")]
 script = ExtResource("1_hv8de")
-weapon = NodePath("Sword")
+weapon = NodePath("Crossbow")
 texture = ExtResource("2_nbd2o")
 pixel_size = 0.063
 metadata/_custom_type_script = "uid://btaocib3f873c"
@@ -127,7 +128,7 @@ texture_filter = 0
 texture = ExtResource("2_nbd2o")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
 shape = SubResource("SphereShape3D_lx80n")
 
 [node name="Health" type="Node" parent="."]
@@ -135,7 +136,6 @@ script = ExtResource("3_nbd2o")
 metadata/_custom_type_script = "uid://c7ykkd5yi6gjv"
 
 [node name="HurtBox" type="Area3D" parent="." node_paths=PackedStringArray("health", "ignored_source")]
-visible = false
 script = ExtResource("4_lx80n")
 health = NodePath("../Health")
 ignored_source = NodePath("..")
@@ -166,7 +166,5 @@ libraries = {
 &"": SubResource("AnimationLibrary_5texh")
 }
 
-[node name="Sword" parent="." node_paths=PackedStringArray("damage_source") instance=ExtResource("9_c8lay")]
+[node name="Crossbow" parent="." node_paths=PackedStringArray("damage_source") instance=ExtResource("9_c8lay")]
 damage_source = NodePath("..")
-
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]

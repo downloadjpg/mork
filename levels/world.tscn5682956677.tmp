@@ -1,14 +1,16 @@
-[gd_scene load_steps=11 format=3 uid="uid://bh8jygorf0gkj"]
+[gd_scene load_steps=13 format=3 uid="uid://bh8jygorf0gkj"]
 
 [ext_resource type="PackedScene" uid="uid://bhx0kw633ii6j" path="res://entities/player/player.tscn" id="2_tsgde"]
 [ext_resource type="PackedScene" uid="uid://bh6vgr4s68wy3" path="res://entities/chest/chest.tscn" id="3_pmfem"]
 [ext_resource type="Texture2D" uid="uid://1tfvlbwxn7mh" path="res://assets/textures/environment/decal/wasd.png" id="4_lmpr0"]
 [ext_resource type="PackedScene" uid="uid://1vh0v16l8qpl" path="res://entities/environment/door.tscn" id="4_w32yo"]
+[ext_resource type="PackedScene" uid="uid://dgslrqoxy2hxp" path="res://entities/rat/rat.tscn" id="5_712nc"]
 [ext_resource type="MeshLibrary" uid="uid://deotmgceyduke" path="res://mesh_library/mesh_library.tres" id="5_i8ckm"]
 [ext_resource type="Texture2D" uid="uid://i1xueua2jh0n" path="res://assets/textures/environment/decal/right_click.png" id="5_re8x6"]
 [ext_resource type="Texture2D" uid="uid://c4u1l7y47qlb8" path="res://levels/level map#01.png" id="6_i8ckm"]
 [ext_resource type="PackedScene" uid="uid://cbb1om3gr4f6o" path="res://entities/environment/torch.tscn" id="7_vons5"]
 [ext_resource type="PackedScene" uid="uid://bmfk8w3q7af1c" path="res://entities/pickups/sword_pickup.tscn" id="8_687qm"]
+[ext_resource type="PackedScene" uid="uid://dencplf0hqwdq" path="res://entities/pickups/crossbow_pickup.tscn" id="8_legw5"]
 [ext_resource type="PackedScene" uid="uid://ja716y7c8s6x" path="res://entities/rat/enemy_test.tscn" id="12_wqmfy"]
 
 [node name="World" type="Node3D"]
@@ -75,6 +77,10 @@ texture = ExtResource("5_re8x6")
 
 [node name="Entities" type="Node" parent="."]
 
+[node name="CrossbowPickup" parent="Entities" instance=ExtResource("8_legw5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.04913, -1.26029, -19.9824)
+pickup_message = "You pick up a crossbow. Medieval."
+
 [node name="SwordPickup" parent="Entities" instance=ExtResource("8_687qm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.06954, -1.45835, -11.3205)
 
@@ -84,11 +90,14 @@ transform = Transform3D(-0.17186, 0, -0.985121, 0, 1, 0, 0.985121, 0, -0.17186, 
 [node name="Door" parent="Entities" instance=ExtResource("4_w32yo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.0317, -2, -16.8497)
 
-[node name="EnemyTest" parent="Entities" instance=ExtResource("12_wqmfy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.99886, -1.092, -11.1011)
+[node name="Rat" parent="Entities" instance=ExtResource("5_712nc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.08344, -1.3984, -8.25787)
 
 [node name="Player" parent="Entities" instance=ExtResource("2_tsgde")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.48339, -1.94514, -6.73562)
 metadata/_edit_group_ = true
+
+[node name="EnemyTest" parent="Entities" instance=ExtResource("12_wqmfy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.04774, -1.09969, -5.29251)
 
 [editable path="Entities/Player"]

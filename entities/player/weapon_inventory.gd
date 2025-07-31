@@ -30,7 +30,7 @@ func add_to_inventory(weapon_scene : PackedScene):
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("shoot") and held_weapon:
-		held_weapon.fire_weapon(-global_basis.z)
+		held_weapon.try_fire()
 	
 	if event.is_action_pressed("weapon_scroll_up"):
 		held_weapon_idx += 1

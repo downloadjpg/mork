@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://dj8ilmaibdb5t"]
 
-[ext_resource type="Script" uid="uid://cg847ib2c7s2y" path="res://weapons/sword.gd" id="1_oivwf"]
+[ext_resource type="Script" uid="uid://biwfsqs77sms2" path="res://weapons/melee_weapon.gd" id="1_w1idm"]
 [ext_resource type="Texture2D" uid="uid://cl2pcjwx4h1pj" path="res://assets/textures/weapons/greatsword1.png" id="2_oivwf"]
 [ext_resource type="Script" uid="uid://bmbe16sjosqdw" path="res://components/hitbox.gd" id="3_nisn2"]
 [ext_resource type="AudioStream" uid="uid://c0vsreui8bh31" path="res://assets/sounds/woosh.wav" id="4_5ogyc"]
@@ -68,11 +68,12 @@ _data = {
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5ogyc"]
 
-[node name="Sword" type="Node3D"]
-script = ExtResource("1_oivwf")
-infinite_ammo = true
-projectile_speed = 20.0
-metadata/_custom_type_script = "uid://bodluwhnlb5o8"
+[node name="Sword" type="Node3D" node_paths=PackedStringArray("weapon_model")]
+script = ExtResource("1_w1idm")
+weapon_model = NodePath("Sprite3D")
+weapon_name = "Sword"
+auto_fire = true
+metadata/_custom_type_script = "uid://biwfsqs77sms2"
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(-0.650045, 0.581447, -0.489244, 0.666685, 0.745339, 3.51583e-08, -0.364653, 0.326172, 0.872147, 0.177817, -0.252759, -0.327223)
