@@ -126,7 +126,7 @@ _data = {
 }
 
 [node name="Torch" type="Node3D"]
-transform = Transform3D(0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 pixel_size = 0.0208
@@ -150,7 +150,8 @@ libraries = {
 autoplay = "lit"
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0828221, 0.0814406, -0.1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0328221, 0.168043, 0)
 light_color = Color(1, 0.78, 0.56, 1)
 light_energy = 1.00449
+light_bake_mode = 1
 omni_range = 6.639

@@ -34,7 +34,7 @@ func _physics_process(delta: float) -> void:
 	velocity += get_gravity()
 	move_and_slide()
 
-func process_state_pursue(delta: float):
+func process_state_pursue(_delta: float):
 	# move towards target!
 	if not pursue_target:
 		printerr('no pursue target!')

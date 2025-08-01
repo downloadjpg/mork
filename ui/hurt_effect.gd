@@ -4,7 +4,7 @@ var player : Player
 @export var effect_duration = 0.2
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	# TODO: refactor this so it isn't called every frame
 	if player == null:
 		player = GameManager.player

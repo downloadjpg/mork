@@ -6,7 +6,7 @@ var player : Player = null
 @onready var ammo : Label = $MarginContainer/HBoxContainer/Ammo
 @onready var keys : Label = $MarginContainer/HBoxContainer/KeyHBox/KeyCounter
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if player == null:
 		player = GameManager.player
 		return

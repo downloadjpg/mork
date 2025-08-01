@@ -36,26 +36,8 @@ texture = ExtResource("6_i8ckm")
 
 [node name="Decorations" type="Node" parent="."]
 
-[node name="Torch" parent="Decorations" instance=ExtResource("7_vons5")]
-transform = Transform3D(0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0, 1, -7.80711, 0.569674, -9.49215)
-
-[node name="Torch4" parent="Decorations" instance=ExtResource("7_vons5")]
-transform = Transform3D(0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0, 1, -7.80711, 0.569674, -13.4921)
-
-[node name="Torch2" parent="Decorations" instance=ExtResource("7_vons5")]
-transform = Transform3D(-0.866025, -0.5, -8.74228e-08, -0.5, 0.866025, 0, 7.57103e-08, 4.37114e-08, -1, -4.20711, 0.569674, -9.49215)
-
-[node name="Torch3" parent="Decorations" instance=ExtResource("7_vons5")]
-transform = Transform3D(-0.866025, -0.5, -8.74228e-08, -0.5, 0.866025, 0, 7.57103e-08, 4.37114e-08, -1, -4.20711, 0.569674, -13.4921)
-
-[node name="Torch5" parent="Decorations" instance=ExtResource("7_vons5")]
-transform = Transform3D(0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0, 1, -7.80711, 0.569674, -1.43211)
-
 [node name="Torch6" parent="Decorations" instance=ExtResource("7_vons5")]
 transform = Transform3D(0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0, 1, -7.80711, 0.569674, -5.43206)
-
-[node name="Torch7" parent="Decorations" instance=ExtResource("7_vons5")]
-transform = Transform3D(-0.866025, -0.5, -8.74228e-08, -0.5, 0.866025, 0, 7.57103e-08, 4.37114e-08, -1, -4.20711, 0.569674, -1.43211)
 
 [node name="Torch9" parent="Decorations" instance=ExtResource("7_vons5")]
 transform = Transform3D(-3.78551e-08, -2.18557e-08, 1, -0.5, 0.866025, 0, -0.866025, -0.5, -4.37114e-08, 0.39289, 0.569674, -20.1321)
@@ -101,6 +83,15 @@ transform = Transform3D(-3.78552e-08, -2.18557e-08, -1, -0.5, 0.866025, -1.3027e
 
 [node name="Torch8" parent="Decorations" instance=ExtResource("7_vons5")]
 transform = Transform3D(-0.866025, -0.5, -8.74228e-08, -0.5, 0.866025, 0, 7.57103e-08, 4.37114e-08, -1, -4.20711, 0.569674, -5.43206)
+
+[node name="Torch7" parent="Decorations" instance=ExtResource("7_vons5")]
+transform = Transform3D(0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0, 1, -7.80711, 0.569674, -2.2374)
+
+[node name="Torch24" parent="Decorations" instance=ExtResource("7_vons5")]
+transform = Transform3D(-0.866025, -0.5, -8.74228e-08, -0.5, 0.866025, 0, 7.57103e-08, 4.37114e-08, -1, -4.20711, -0.815977, -2.2374)
+
+[node name="Torch23" parent="Decorations" instance=ExtResource("7_vons5")]
+transform = Transform3D(-0.866025, -0.5, -8.74228e-08, -0.5, 0.866025, 0, 7.57103e-08, 4.37114e-08, -1, -4.20711, 0.569674, -12.5592)
 
 [node name="WASD" type="Sprite3D" parent="Decorations"]
 transform = Transform3D(-1.41917e-07, 0, 1, 0, 3.24668, 0, -3.24668, 0, -4.37114e-08, -11.9532, -0.9, -7.28574)

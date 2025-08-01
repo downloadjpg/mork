@@ -45,5 +45,5 @@ func _physics_process(delta):
 	if collision:
 		on_collision(collision)
 
-func on_collision(collision):
+func on_collision(_collision):
 	pass
