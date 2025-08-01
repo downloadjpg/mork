@@ -1,15 +1,15 @@
-[gd_scene load_steps=18 format=3 uid="uid://d016i2d4ipdiu"]
+[gd_scene load_steps=18 format=3 uid="uid://dgslrqoxy2hxp"]
 
-[ext_resource type="Script" uid="uid://c2k4ss6ppyo0s" path="res://entities/rat/rat.gd" id="1_skt08"]
-[ext_resource type="Texture2D" uid="uid://cffj17gse3jn7" path="res://entities/rat/juan.png" id="2_skt08"]
-[ext_resource type="Script" uid="uid://c7ykkd5yi6gjv" path="res://components/health.gd" id="3_8wjbx"]
-[ext_resource type="Script" uid="uid://cnete75ch7o2c" path="res://components/hurtbox.gd" id="4_xkyld"]
-[ext_resource type="PackedScene" uid="uid://chqy4xa7xt1an" path="res://components/player_detection.tscn" id="5_7a2lb"]
-[ext_resource type="AudioStream" uid="uid://bfoudssotypp1" path="res://assets/sounds/rat_squeak.ogg" id="6_351u7"]
-[ext_resource type="Script" uid="uid://bmbe16sjosqdw" path="res://components/hitbox.gd" id="7_2a22p"]
-[ext_resource type="Script" uid="uid://dd4vcmtucc07g" path="res://components/particle_emitter.gd" id="8_tscb6"]
-[ext_resource type="PackedScene" uid="uid://byn4vgdaavyqd" path="res://effects/blood_particle.tscn" id="9_huath"]
-[ext_resource type="PackedScene" uid="uid://iyq6fj27vvpv" path="res://effects/death_particle.tscn" id="10_02ahc"]
+[ext_resource type="Texture2D" uid="uid://b03aoxeib0ss7" path="res://assets/textures/monsters/grey_rat.png" id="1_3elot"]
+[ext_resource type="Script" uid="uid://c2k4ss6ppyo0s" path="res://entities/enemies/rat/rat.gd" id="1_ykyuw"]
+[ext_resource type="Script" uid="uid://c7ykkd5yi6gjv" path="res://components/health.gd" id="3_yvjy2"]
+[ext_resource type="Script" uid="uid://cnete75ch7o2c" path="res://components/hurtbox.gd" id="4_dt4dc"]
+[ext_resource type="PackedScene" uid="uid://btt4iagtjo840" path="res://components/player_detection.tscn" id="5_dt4dc"]
+[ext_resource type="PackedScene" uid="uid://iyq6fj27vvpv" path="res://particles/death_particle.tscn" id="6_b6v2d"]
+[ext_resource type="AudioStream" uid="uid://bfoudssotypp1" path="res://assets/sounds/rat_squeak.ogg" id="6_y0neb"]
+[ext_resource type="Script" uid="uid://dd4vcmtucc07g" path="res://components/particle_emitter.gd" id="7_4mcxe"]
+[ext_resource type="PackedScene" uid="uid://byn4vgdaavyqd" path="res://particles/blood_particle.tscn" id="7_5texh"]
+[ext_resource type="Script" uid="uid://bmbe16sjosqdw" path="res://components/hitbox.gd" id="8_m16py"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_712nc"]
 height = 1.00541
@@ -115,31 +115,31 @@ _data = {
 radius = 0.6
 
 [node name="Rat" type="CharacterBody3D"]
-script = ExtResource("1_skt08")
+script = ExtResource("1_ykyuw")
 move_speed = 1.0
+metadata/_custom_type_script = "uid://btaocib3f873c"
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
-pixel_size = 0.0025
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+pixel_size = 0.0625
 billboard = 2
 shaded = true
 texture_filter = 0
-texture = ExtResource("2_skt08")
+texture = ExtResource("1_3elot")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.485192, 0)
 shape = SubResource("CapsuleShape3D_712nc")
 
 [node name="Health" type="Node" parent="."]
-script = ExtResource("3_8wjbx")
+script = ExtResource("3_yvjy2")
 metadata/_custom_type_script = "uid://c7ykkd5yi6gjv"
 
-[node name="HurtBox" type="Area3D" parent="." node_paths=PackedStringArray("health", "ignored_source")]
+[node name="HurtBox" type="Area3D" parent="." node_paths=PackedStringArray("health")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 visible = false
-script = ExtResource("4_xkyld")
+script = ExtResource("4_dt4dc")
 health = NodePath("../Health")
-ignored_source = NodePath("..")
 invulnerability_time = 1.0
 metadata/_custom_type_script = "uid://cnete75ch7o2c"
 
@@ -147,10 +147,10 @@ metadata/_custom_type_script = "uid://cnete75ch7o2c"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.26141, 0)
 shape = SubResource("SphereShape3D_yvjy2")
 
-[node name="PlayerDetection" parent="." instance=ExtResource("5_7a2lb")]
+[node name="PlayerDetection" parent="." instance=ExtResource("5_dt4dc")]
 
 [node name="DetectionBark" type="AudioStreamPlayer3D" parent="PlayerDetection"]
-stream = ExtResource("6_351u7")
+stream = ExtResource("6_y0neb")
 bus = &"SFX"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -158,9 +158,8 @@ libraries = {
 &"": SubResource("AnimationLibrary_5texh")
 }
 
-[node name="HitBox" type="Area3D" parent="." node_paths=PackedStringArray("damage_source")]
-script = ExtResource("7_2a22p")
-damage_source = NodePath("..")
+[node name="HitBox" type="Area3D" parent="."]
+script = ExtResource("8_m16py")
 metadata/_custom_type_script = "uid://bmbe16sjosqdw"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HitBox"]
@@ -169,9 +168,9 @@ shape = SubResource("SphereShape3D_m16py")
 
 [node name="ParticleEmitter" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.478008, 0)
-script = ExtResource("8_tscb6")
+script = ExtResource("7_4mcxe")
 particle_scene = Dictionary[String, PackedScene]({
-"blood": ExtResource("9_huath"),
-"death": ExtResource("10_02ahc")
+"blood": ExtResource("7_5texh"),
+"death": ExtResource("6_b6v2d")
 })
 metadata/_custom_type_script = "uid://dd4vcmtucc07g"

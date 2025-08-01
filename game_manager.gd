@@ -4,6 +4,16 @@ var player : Player = null
 var player_dead : bool = false
 var inventory = {}
 
+var current_level : Node3D
+
+class PlayerVariables:
+	var keys_held : int = 0
+	var weapons_held : Array[Weapon]
+	var health : int
+
+
+
+
 func _ready():
 	Events.player_spawn.connect(_on_player_spawn)
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED

@@ -1,0 +1,105 @@
+[gd_scene load_steps=8 format=3 uid="uid://8txbd83flrmj"]
+
+[ext_resource type="Script" uid="uid://c8k7qpxd6ay63" path="res://ui/status_bar.gd" id="1_obcwv"]
+[ext_resource type="Texture2D" uid="uid://cropdyfgbyluj" path="res://assets/textures/heart.png" id="2_bo1jx"]
+[ext_resource type="Texture2D" uid="uid://7vm4e5lol3te" path="res://assets/textures/key.png" id="3_gycre"]
+[ext_resource type="Script" uid="uid://cpopv2a3xr0qx" path="res://ui/message_log.gd" id="4_pa1oa"]
+[ext_resource type="Texture2D" uid="uid://bk3va4pnx1g06" path="res://assets/textures/stupid_vignette.png" id="5_ay4pc"]
+[ext_resource type="Script" uid="uid://brpimpgkv53yc" path="res://ui/hurt_effect.gd" id="6_bi8hs"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0xm2m"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="UI" type="Control"]
+z_index = 890
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StatusBar" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -56.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_0xm2m")
+script = ExtResource("1_obcwv")
+
+[node name="MarginContainer" type="MarginContainer" parent="StatusBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="StatusBar/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+alignment = 1
+
+[node name="HealthHBox" type="HBoxContainer" parent="StatusBar/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="StatusBar/MarginContainer/HBoxContainer/HealthHBox"]
+layout_mode = 2
+texture = ExtResource("2_bo1jx")
+stretch_mode = 5
+
+[node name="Health" type="Label" parent="StatusBar/MarginContainer/HBoxContainer/HealthHBox"]
+layout_mode = 2
+text = "98%"
+
+[node name="Ammo" type="Label" parent="StatusBar/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "12/108"
+
+[node name="WeaponSelect" type="Panel" parent="StatusBar/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="KeyHBox" type="HBoxContainer" parent="StatusBar/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="StatusBar/MarginContainer/HBoxContainer/KeyHBox"]
+layout_mode = 2
+texture = ExtResource("3_gycre")
+stretch_mode = 5
+
+[node name="KeyCounter" type="Label" parent="StatusBar/MarginContainer/HBoxContainer/KeyHBox"]
+layout_mode = 2
+text = "0"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 231.0
+offset_bottom = 231.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+
+[node name="MessageLog" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "beelzebub"
+script = ExtResource("4_pa1oa")
+
+[node name="HurtEffect" type="TextureRect" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.425)
+z_index = -1
+layout_mode = 0
+offset_right = 720.0
+offset_bottom = 432.0
+texture = ExtResource("5_ay4pc")
+script = ExtResource("6_bi8hs")

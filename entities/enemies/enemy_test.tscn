@@ -1,17 +1,16 @@
 [gd_scene load_steps=17 format=3 uid="uid://ja716y7c8s6x"]
 
-[ext_resource type="Script" uid="uid://btaocib3f873c" path="res://entities/enemy.gd" id="1_hv8de"]
-[ext_resource type="Texture2D" uid="uid://cd4v07i7eo4p1" path="res://assets/textures/monsters/skeleton_humanoid_large.png" id="2_nbd2o"]
-[ext_resource type="Script" uid="uid://c7ykkd5yi6gjv" path="res://components/health.gd" id="3_nbd2o"]
-[ext_resource type="Script" uid="uid://cnete75ch7o2c" path="res://components/hurtbox.gd" id="4_lx80n"]
-[ext_resource type="Script" uid="uid://dyw212ookfrx4" path="res://components/player_detection.gd" id="5_011bx"]
-[ext_resource type="Script" uid="uid://dd4vcmtucc07g" path="res://components/particle_emitter.gd" id="6_011bx"]
-[ext_resource type="PackedScene" uid="uid://byn4vgdaavyqd" path="res://effects/blood_particle.tscn" id="7_y3uxs"]
-[ext_resource type="PackedScene" uid="uid://iyq6fj27vvpv" path="res://effects/death_particle.tscn" id="8_y3uxs"]
-[ext_resource type="PackedScene" uid="uid://cyy04ts8ffma4" path="res://weapons/projectiles/crossbow.tscn" id="9_c8lay"]
+[ext_resource type="Script" uid="uid://btaocib3f873c" path="res://entities/enemies/enemy.gd" id="1_3fpgb"]
+[ext_resource type="Texture2D" uid="uid://cd4v07i7eo4p1" path="res://assets/textures/monsters/skeleton_humanoid_large.png" id="2_hbx10"]
+[ext_resource type="Script" uid="uid://c7ykkd5yi6gjv" path="res://components/health.gd" id="3_3k36q"]
+[ext_resource type="Script" uid="uid://cnete75ch7o2c" path="res://components/hurtbox.gd" id="4_sk0vk"]
+[ext_resource type="Script" uid="uid://dyw212ookfrx4" path="res://components/player_detection.gd" id="5_77ya7"]
+[ext_resource type="Script" uid="uid://dd4vcmtucc07g" path="res://components/particle_emitter.gd" id="6_x7yod"]
+[ext_resource type="PackedScene" uid="uid://byn4vgdaavyqd" path="res://particles/blood_particle.tscn" id="7_rjocv"]
+[ext_resource type="PackedScene" uid="uid://iyq6fj27vvpv" path="res://particles/death_particle.tscn" id="8_p0cq4"]
+[ext_resource type="PackedScene" uid="uid://cyy04ts8ffma4" path="res://weapons/crossbow.tscn" id="9_v1idq"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_lx80n"]
-radius = 1.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_011bx"]
 radius = 1.0
@@ -114,9 +113,11 @@ _data = {
 }
 
 [node name="EnemyTest" type="CharacterBody3D" node_paths=PackedStringArray("weapon")]
-script = ExtResource("1_hv8de")
+script = ExtResource("1_3fpgb")
+move_speed = 3.0
+attack_range = 10.0
 weapon = NodePath("Crossbow")
-texture = ExtResource("2_nbd2o")
+texture = ExtResource("2_hbx10")
 pixel_size = 0.063
 metadata/_custom_type_script = "uid://btaocib3f873c"
 
@@ -125,18 +126,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
 pixel_size = 0.063
 billboard = 2
 texture_filter = 0
-texture = ExtResource("2_nbd2o")
+texture = ExtResource("2_hbx10")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, 0)
 shape = SubResource("SphereShape3D_lx80n")
 
 [node name="Health" type="Node" parent="."]
-script = ExtResource("3_nbd2o")
+script = ExtResource("3_3k36q")
 metadata/_custom_type_script = "uid://c7ykkd5yi6gjv"
 
 [node name="HurtBox" type="Area3D" parent="." node_paths=PackedStringArray("health", "ignored_source")]
-script = ExtResource("4_lx80n")
+visible = false
+script = ExtResource("4_sk0vk")
 health = NodePath("../Health")
 ignored_source = NodePath("..")
 metadata/_custom_type_script = "uid://cnete75ch7o2c"
@@ -146,7 +148,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
 shape = SubResource("SphereShape3D_011bx")
 
 [node name="PlayerDetection" type="Area3D" parent="."]
-script = ExtResource("5_011bx")
+script = ExtResource("5_77ya7")
 metadata/_custom_type_script = "uid://dyw212ookfrx4"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerDetection"]
@@ -154,10 +156,10 @@ shape = SubResource("SphereShape3D_nbd2o")
 debug_color = Color(0.282447, 0.7, 0.267001, 0.094)
 
 [node name="ParticleEmitter" type="Node3D" parent="."]
-script = ExtResource("6_011bx")
+script = ExtResource("6_x7yod")
 particle_scene = Dictionary[String, PackedScene]({
-"blood": ExtResource("7_y3uxs"),
-"death": ExtResource("8_y3uxs")
+"blood": ExtResource("7_rjocv"),
+"death": ExtResource("8_p0cq4")
 })
 metadata/_custom_type_script = "uid://dd4vcmtucc07g"
 
@@ -166,5 +168,7 @@ libraries = {
 &"": SubResource("AnimationLibrary_5texh")
 }
 
-[node name="Crossbow" parent="." node_paths=PackedStringArray("damage_source") instance=ExtResource("9_c8lay")]
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+
+[node name="Crossbow" parent="." node_paths=PackedStringArray("damage_source") instance=ExtResource("9_v1idq")]
 damage_source = NodePath("..")
