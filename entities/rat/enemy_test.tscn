@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://dd4vcmtucc07g" path="res://components/particle_emitter.gd" id="6_011bx"]
 [ext_resource type="PackedScene" uid="uid://byn4vgdaavyqd" path="res://effects/blood_particle.tscn" id="7_y3uxs"]
 [ext_resource type="PackedScene" uid="uid://iyq6fj27vvpv" path="res://effects/death_particle.tscn" id="8_y3uxs"]
-[ext_resource type="PackedScene" uid="uid://b2cs1n3wclyl4" path="res://weapons/projectiles/crossbow.tscn" id="9_c8lay"]
+[ext_resource type="PackedScene" uid="uid://cyy04ts8ffma4" path="res://weapons/crossbow.tscn" id="9_c8lay"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_lx80n"]
 

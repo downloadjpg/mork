@@ -150,6 +150,7 @@ libraries = {
 autoplay = "lit"
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0336232, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0828221, 0.0814406, -0.1)
 light_color = Color(1, 0.78, 0.56, 1)
 light_energy = 1.00449
+omni_range = 6.639

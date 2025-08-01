@@ -117,6 +117,7 @@ radius = 0.6
 [node name="Rat" type="CharacterBody3D"]
 script = ExtResource("1_ykyuw")
 move_speed = 1.0
+metadata/_custom_type_script = "uid://btaocib3f873c"
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
@@ -134,12 +135,11 @@ shape = SubResource("CapsuleShape3D_712nc")
 script = ExtResource("3_yvjy2")
 metadata/_custom_type_script = "uid://c7ykkd5yi6gjv"
 
-[node name="HurtBox" type="Area3D" parent="." node_paths=PackedStringArray("health", "ignored_source")]
+[node name="HurtBox" type="Area3D" parent="." node_paths=PackedStringArray("health")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 visible = false
 script = ExtResource("4_dt4dc")
 health = NodePath("../Health")
-ignored_source = NodePath("..")
 invulnerability_time = 1.0
 metadata/_custom_type_script = "uid://cnete75ch7o2c"
 
@@ -158,9 +158,8 @@ libraries = {
 &"": SubResource("AnimationLibrary_5texh")
 }
 
-[node name="HitBox" type="Area3D" parent="." node_paths=PackedStringArray("damage_source")]
+[node name="HitBox" type="Area3D" parent="."]
 script = ExtResource("8_m16py")
-damage_source = NodePath("..")
 metadata/_custom_type_script = "uid://bmbe16sjosqdw"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HitBox"]

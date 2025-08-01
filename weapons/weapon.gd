@@ -65,7 +65,8 @@ func _fire():
 	firing_cooldown = fire_rate
 	
 	# Use ammo
-	current_ammo -= ammo_per_shot
+	if uses_ammo:
+		current_ammo -= ammo_per_shot
 	
 	# Play effects
 	_play_fire_effects()

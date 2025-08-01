@@ -1,11 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://cyy04ts8ffma4"]
+[gd_scene load_steps=4 format=3 uid="uid://cyy04ts8ffma4"]
 
-[ext_resource type="Script" uid="uid://bodluwhnlb5o8" path="res://weapons/weapon.gd" id="1_m3te7"]
+[ext_resource type="Script" uid="uid://dqrlyx4bhckd4" path="res://weapons/projectile_weapon.gd" id="1_l5gvd"]
+[ext_resource type="PackedScene" uid="uid://bdkts3u6xqgxe" path="res://weapons/projectiles/arrow_projectile.tscn" id="2_ua5uu"]
 [ext_resource type="Texture2D" uid="uid://ddkqajkh5ayqm" path="res://assets/textures/weapons/crossbow1.png" id="3_l5gvd"]
 
-[node name="Crossbow" type="Node3D"]
-script = ExtResource("1_m3te7")
-metadata/_custom_type_script = "uid://bodluwhnlb5o8"
+[node name="Crossbow" type="Node3D" node_paths=PackedStringArray("muzzle_point")]
+script = ExtResource("1_l5gvd")
+projectile_scene = ExtResource("2_ua5uu")
+muzzle_point = NodePath("MuzzlePoint")
+uses_ammo = true
+metadata/_custom_type_script = "uid://dqrlyx4bhckd4"
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, 0.167098, -0.149047, -0.327223)
@@ -16,3 +20,6 @@ texture = ExtResource("3_l5gvd")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.146293, 0, -0.925667)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+bus = &"SFX"

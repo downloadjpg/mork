@@ -73,6 +73,7 @@ script = ExtResource("1_w1idm")
 weapon_model = NodePath("Sprite3D")
 weapon_name = "Sword"
 auto_fire = true
+fire_sound = ExtResource("4_5ogyc")
 metadata/_custom_type_script = "uid://biwfsqs77sms2"
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
@@ -96,5 +97,4 @@ metadata/_custom_type_script = "uid://bmbe16sjosqdw"
 shape = SubResource("BoxShape3D_5ogyc")
 disabled = true
 
-[node name="SwooshSound" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("4_5ogyc")
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
