@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://din8cookuxk0p"]
+
+[ext_resource type="Script" uid="uid://6j34kqfrexlu" path="res://entities/pickups/health_pickup.gd" id="1_ugu7b"]
+[ext_resource type="Script" uid="uid://dmse8q8nfu63v" path="res://entities/pickups/sine_float.gd" id="3_jmjsb"]
+[ext_resource type="Texture2D" uid="uid://u4r7ptde7g1" path="res://assets/textures/ruby.png" id="3_ugu7b"]
+[ext_resource type="AudioStream" uid="uid://bu8cw68plpy4b" path="res://assets/sounds/health_pickup.wav" id="4_ugu7b"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_7ugiu"]
+
+[node name="HealthPickup" type="Area3D"]
+script = ExtResource("1_ugu7b")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_7ugiu")
+
+[node name="SineFloat" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0971992, 0)
+script = ExtResource("3_jmjsb")
+amplitude = 0.1
+frequency = 0.4
+metadata/_custom_type_script = "uid://dmse8q8nfu63v"
+
+[node name="Sprite3D" type="Sprite3D" parent="SineFloat"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.126259, 0)
+pixel_size = 0.0208
+billboard = 2
+texture_filter = 0
+texture = ExtResource("3_ugu7b")
+
+[node name="PickupSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_ugu7b")
+bus = &"SFX"

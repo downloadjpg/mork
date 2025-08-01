@@ -1,37 +1,23 @@
-[gd_scene load_steps=9 format=3 uid="uid://dencplf0hqwdq"]
+[gd_scene load_steps=7 format=3 uid="uid://dencplf0hqwdq"]
 
 [ext_resource type="Script" uid="uid://doyaui233uwtd" path="res://entities/pickups/weapon_pickup.gd" id="1_x8mnu"]
 [ext_resource type="Texture2D" uid="uid://ddkqajkh5ayqm" path="res://assets/textures/weapons/crossbow1.png" id="2_7ugiu"]
+[ext_resource type="PackedScene" uid="uid://cyy04ts8ffma4" path="res://weapons/crossbow.tscn" id="2_cfr2a"]
 [ext_resource type="Script" uid="uid://dmse8q8nfu63v" path="res://entities/pickups/sine_float.gd" id="2_kp0uy"]
-[ext_resource type="Script" uid="uid://dqrlyx4bhckd4" path="res://weapons/projectile_weapon.gd" id="2_p7wpt"]
-[ext_resource type="PackedScene" uid="uid://bdkts3u6xqgxe" path="res://weapons/projectiles/arrow_projectile.tscn" id="3_c3nbw"]
 [ext_resource type="AudioStream" uid="uid://cl3353evt5nvt" path="res://assets/sounds/wood_clatter.wav" id="4_4al0a"]
-
-[sub_resource type="PackedScene" id="PackedScene_sb5oh"]
-_bundled = {
-"conn_count": 0,
-"conns": PackedInt32Array(),
-"editable_instances": [],
-"names": PackedStringArray("Crossbow", "script", "projectile_scene", "muzzle_point", "weapon_name", "fire_rate", "metadata/_custom_type_script", "Node3D", "Sprite3D", "transform", "texture_filter", "texture", "MuzzlePoint", "Marker3D", "AnimationPlayer"),
-"node_count": 4,
-"node_paths": [],
-"nodes": PackedInt32Array(-1, -1, 7, 0, -1, 6, 1, 0, 2, 1, 1073741827, 2, 4, 3, 5, 4, 6, 5, 0, 0, 0, 8, 8, -1, 3, 9, 6, 10, 7, 11, 8, 0, 0, 0, 13, 12, -1, 1, 9, 9, 0, 0, 0, 14, 14, -1, 0, 0),
-"variants": [ExtResource("2_p7wpt"), ExtResource("3_c3nbw"), NodePath("MuzzlePoint"), "Crossbow", 2.5, "uid://dqrlyx4bhckd4", Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, 0.167098, -0.149047, -0.327223), 0, ExtResource("2_7ugiu"), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.146293, 0, -0.925667)],
-"version": 3
-}
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_7ugiu"]
 
 [node name="CrossbowPickup" type="Area3D"]
 script = ExtResource("1_x8mnu")
-weapon_scene = SubResource("PackedScene_sb5oh")
+weapon_scene = ExtResource("2_cfr2a")
 pickup_message = "You find a crossbow! Medieval."
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_7ugiu")
 
 [node name="SineFloat" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.094839, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00201149, 0)
 script = ExtResource("2_kp0uy")
 amplitude = 0.1
 frequency = 0.4

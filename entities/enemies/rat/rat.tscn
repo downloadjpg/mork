@@ -140,7 +140,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 visible = false
 script = ExtResource("4_dt4dc")
 health = NodePath("../Health")
-invulnerability_time = 1.0
+invulnerability_time = 0.0
 metadata/_custom_type_script = "uid://cnete75ch7o2c"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HurtBox"]

@@ -13,7 +13,7 @@ var collider : Node3D
 func _physics_process(delta: float) -> void:
 	if pinned:
 		if pin_point:
-			position = pin_point + collider.global_position
+			position = pin_point + collider.position
 		return
 	super(delta)
 	# Make arrows rotate and follow their velocity
@@ -28,14 +28,14 @@ func _physics_process(delta: float) -> void:
 			look_at(position + velocity, Vector3.UP)
 	
 
-func on_collision(collision):
+func on_collision(collision : KinematicCollision3D):
 	if pinned:
 		return
 	# Get collision info
 	var collision_point = collision.get_position()
 	#var collision_normal = collision.get_normal()
 	collider = collision.get_collider()
-	pin_point = (collision_point - stick_point.position)
+	pin_point = to_global(to_local(collision_point) - stick_point.position)
 	
 	
 	# Pin to whatever was hit

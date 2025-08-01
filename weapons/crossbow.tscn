@@ -1,14 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://cyy04ts8ffma4"]
+[gd_scene load_steps=6 format=3 uid="uid://cyy04ts8ffma4"]
 
 [ext_resource type="Script" uid="uid://dqrlyx4bhckd4" path="res://weapons/projectile_weapon.gd" id="1_l5gvd"]
 [ext_resource type="PackedScene" uid="uid://bdkts3u6xqgxe" path="res://weapons/projectiles/arrow_projectile.tscn" id="2_ua5uu"]
+[ext_resource type="AudioStream" uid="uid://b8340y4hdwa0s" path="res://assets/sounds/crossbow_fire.wav" id="3_4mdms"]
 [ext_resource type="Texture2D" uid="uid://ddkqajkh5ayqm" path="res://assets/textures/weapons/crossbow1.png" id="3_l5gvd"]
+[ext_resource type="AudioStream" uid="uid://ygicltcbx8xe" path="res://assets/sounds/door_locked.wav" id="4_d0w3y"]
 
 [node name="Crossbow" type="Node3D" node_paths=PackedStringArray("muzzle_point")]
 script = ExtResource("1_l5gvd")
 projectile_scene = ExtResource("2_ua5uu")
 muzzle_point = NodePath("MuzzlePoint")
 uses_ammo = true
+fire_sound = ExtResource("3_4mdms")
+empty_sound = ExtResource("4_d0w3y")
 metadata/_custom_type_script = "uid://dqrlyx4bhckd4"
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
@@ -22,4 +26,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.146293, 0, -0.925667)
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+attenuation_model = 3
+volume_db = -2.0
 bus = &"SFX"
