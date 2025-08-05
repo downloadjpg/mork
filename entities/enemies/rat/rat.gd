@@ -1,5 +1,5 @@
 extends CharacterBody3D
-#class_name Enemy
+class_name Enemy
 
 @onready var player_detection : PlayerDetection = $PlayerDetection 
 
