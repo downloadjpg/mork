@@ -45,4 +45,4 @@ func pickup_weapon(weapon_scene: PackedScene):
 	weapon_inventory.add_to_inventory(weapon_scene)
 	
 func _on_health_depleted():
-	Events.player_death.emit()
+	Events.game.player_death.emit()

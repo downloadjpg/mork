@@ -1,7 +1,6 @@
 class_name HitBox
 extends Area3D
 
-
 @export var damage_source: Node3D = null:
 	get:
 		# If damage_source is explicitly set, return it

@@ -7,6 +7,8 @@ signal received_damage(damage: int)
 @export var ignored_source: Node3D
 @export_range(0, 2) var invulnerability_time: float = 0.8
 
+@export var ignore_enemies := false
+
 func _ready() -> void:
 	connect("area_entered", _on_area_entered)
 
@@ -16,6 +18,8 @@ func _on_area_entered(hitbox) -> void:
 		return
 	hitbox = hitbox as HitBox # ugh
 	if hitbox.damage_source == ignored_source:
+		return
+	if ignore_enemies and hitbox.damage_source is Enemy:
 		return
 	else:
 		print('hitbox_source: ', hitbox.damage_source)
