@@ -12,7 +12,7 @@ config_version=5
 
 config/name="MORK"
 config/description="2.5D FPS created for DIG 2632, Summer 2025"
-run/main_scene="uid://7mgcejtwwy0m"
+run/main_scene="uid://bmt3p0k738nfa"
 config/features=PackedStringArray("4.4", "Mobile")
 config/icon="uid://b6c44fv07n2i1"
 
@@ -86,7 +86,3 @@ weapon_scroll_down={
 3d_physics/layer_1="World"
 3d_physics/layer_2="Player"
 3d_physics/layer_3="Interaction"
-
-[rendering]
-
-renderer/rendering_method="mobile"

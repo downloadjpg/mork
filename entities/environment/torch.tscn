@@ -126,7 +126,6 @@ _data = {
 }
 
 [node name="Torch" type="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 pixel_size = 0.0208

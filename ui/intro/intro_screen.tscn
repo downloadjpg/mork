@@ -30,14 +30,16 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -8.0
-offset_right = 20.0
-offset_bottom = 8.0
+offset_left = -308.0
+offset_top = -55.0
+offset_right = 305.0
+offset_bottom = 77.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Intro text intro intro. Intro intro intro.
-And the then the sun exploded.
+text = "Deep below the earth, evil stirs.
+
+You are a hero of old, risen from your peaceful slumber to serve the gods one final time. Retrieve the Amulet of MORK!
 
 Press Enter to start."
 horizontal_alignment = 1
+autowrap_mode = 2

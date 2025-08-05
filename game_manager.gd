@@ -12,7 +12,7 @@ class PlayerVariables:
 	var health : int
 
 
-
+var current_scene : Node
 
 func _ready():
 	Events.player_spawn.connect(_on_player_spawn)
@@ -50,3 +50,9 @@ func _on_player_death():
 
 func restart_game():
 	pass
+
+func change_scene(scene: PackedScene):
+	if current_scene:
+		current_scene.queue_free()
+	current_scene = scene.instantiate()
+	get_parent().add_child(current_scene)

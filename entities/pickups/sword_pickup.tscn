@@ -17,7 +17,7 @@ pickup_message = "You find a sword. It glistens!"
 shape = SubResource("SphereShape3D_7ugiu")
 
 [node name="SineFloat" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00846865, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0748732, 0)
 script = ExtResource("2_8tkg3")
 amplitude = 0.1
 frequency = 0.4

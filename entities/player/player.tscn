@@ -1,9 +1,9 @@
 [gd_scene load_steps=10 format=3 uid="uid://bhx0kw633ii6j"]
 
 [ext_resource type="Script" uid="uid://bm4oichhselaf" path="res://entities/player/player.gd" id="1_b0kkn"]
-[ext_resource type="Texture2D" uid="uid://djj5f0x5qsqb0" path="res://assets/textures/monsters/human.png" id="1_merdl"]
 [ext_resource type="Script" uid="uid://cnyov6scfkvxb" path="res://entities/player/interaction_ray.gd" id="3_sglur"]
 [ext_resource type="Script" uid="uid://mw677sgbdi3o" path="res://entities/player/weapon_inventory.gd" id="4_8fjmc"]
+[ext_resource type="Texture2D" uid="uid://djj5f0x5qsqb0" path="res://assets/textures/monsters/human.png" id="4_qiwj3"]
 [ext_resource type="Script" uid="uid://c7ykkd5yi6gjv" path="res://components/health.gd" id="5_fkugw"]
 [ext_resource type="Script" uid="uid://cnete75ch7o2c" path="res://components/hurtbox.gd" id="6_8fjmc"]
 [ext_resource type="AudioStream" uid="uid://digmd3yl33kjp" path="res://assets/sounds/footstep_loop.wav" id="7_qiwj3"]
@@ -41,11 +41,10 @@ shape = SubResource("CapsuleShape3D_u3f3p")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
-visible = false
 pixel_size = 0.0626
 billboard = 2
 texture_filter = 0
-texture = ExtResource("1_merdl")
+texture = ExtResource("4_qiwj3")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
