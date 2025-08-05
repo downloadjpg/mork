@@ -5,9 +5,10 @@ var message_limit = 5
 const MESSAGE_DURATION = 4.0 # the time a message remains on screen
 
 func _ready():
-	send_message("The air is cold and damp, the darkness beckons.")
+	Events.ui.send_message.connect(_on_send_message)
+	_on_send_message("The air is cold and damp, the darkness beckons.")
 
-func send_message(msg : String) -> void:
+func _on_send_message(msg : String) -> void:
 	if messages.size() >= message_limit:
 		messages.pop_front()
 	messages.push_back(msg)

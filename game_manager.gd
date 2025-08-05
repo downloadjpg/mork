@@ -15,7 +15,7 @@ class PlayerVariables:
 var current_scene : Node
 
 func _ready():
-	Events.player_spawn.connect(_on_player_spawn)
+	Events.game.player_spawn.connect(_on_player_spawn)
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	inventory["key"] = 0
 
@@ -29,13 +29,12 @@ func _input(event):
 		if player_dead:
 			restart_game()
 
+func send_message(msg: String):
+	Events.ui.send_message.emit(msg)
+
 func set_player(node: Player):
 	player = node
 	emit_signal("player_set")
-
-func send_message(message: String):
-	var message_log = get_node("/root/Main/UI/MarginContainer/MessageLog")
-	message_log.send_message(message)
 
 func _on_player_spawn(ref):
 	player = ref

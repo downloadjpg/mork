@@ -13,7 +13,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _ready():
 	health.health_depleted.connect(_on_health_depleted)
-	Events.player_spawn.emit(self)
+	Events.game.player_spawn.emit(self)
 
 func _physics_process(delta):
 	velocity.y += -gravity * delta
