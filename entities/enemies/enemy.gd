@@ -26,6 +26,7 @@ class_name Enemy extends CharacterBody3D
 @onready var hurt_box: HurtBox = $HurtBox
 @onready var sprite = $Sprite3D
 @onready var animation_player = $AnimationPlayer
+@onready var audio_player = $AudioStreamPlayer3D
 
 #@onready var brain = AIBrain.new()
 #@onready var movement_component = $MovementComponent
@@ -35,7 +36,18 @@ var state = State.IDLE
 var attack_target : Node3D = null
 
 func attack():
-	weapon.try_fire()
+	if weapon:
+		weapon.try_fire()
+
+func play_sound(sound: AudioStream):
+	if not audio_player:
+		print_debug("Tried to play sound with no audio player")
+		return
+	if not sound:
+		print_debug("Tried to play sound with no sound file set")
+		return
+	audio_player.stream = sound
+	audio_player.play()
 
 func _ready():
 	health_component.connect("health_changed", _on_health_changed)
@@ -54,7 +66,8 @@ func _physics_process(delta: float) -> void:
 			# chill
 		State.PURSUE:
 			# Move towards target
-			weapon.look_at(attack_target.position)
+			if weapon:
+				weapon.look_at(attack_target.position)
 			var to_player = attack_target.position - position
 			if to_player.length() <= attack_range:
 				velocity = Vector3.ZERO
@@ -69,10 +82,10 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_player_detected(player: Player):
-	print('eek!')
 	state = State.PURSUE
 	attack_target = player
 	#play wake sound
+	play_sound(wake_sound)
 
 func _on_player_lost():
 	state = State.IDLE

@@ -29,6 +29,10 @@ window/size/viewport_height=480
 window/stretch/mode="viewport"
 window/main_scene="uid://bh8jygorf0gkj"
 
+[dotnet]
+
+project/assembly_name="MORK"
+
 [gui]
 
 theme/custom_font="uid://2pwtgcbhnrfx"

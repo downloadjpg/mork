@@ -1,11 +1,11 @@
 [gd_scene load_steps=18 format=3 uid="uid://d016i2d4ipdiu"]
 
-[ext_resource type="Script" uid="uid://c2k4ss6ppyo0s" path="res://entities/enemies/rat/rat.gd" id="1_skt08"]
+[ext_resource type="Script" uid="uid://btaocib3f873c" path="res://entities/enemies/enemy.gd" id="1_hr58s"]
+[ext_resource type="AudioStream" uid="uid://ilb0ncng55hw" path="res://entities/enemies/juan/evil juan raw.wav" id="2_gfgv8"]
 [ext_resource type="Texture2D" uid="uid://cffj17gse3jn7" path="res://entities/enemies/juan/juan.png" id="2_skt08"]
 [ext_resource type="Script" uid="uid://c7ykkd5yi6gjv" path="res://components/health.gd" id="3_8wjbx"]
 [ext_resource type="Script" uid="uid://cnete75ch7o2c" path="res://components/hurtbox.gd" id="4_xkyld"]
 [ext_resource type="PackedScene" uid="uid://btt4iagtjo840" path="res://components/player_detection.tscn" id="5_7a2lb"]
-[ext_resource type="AudioStream" uid="uid://bfoudssotypp1" path="res://assets/sounds/rat_squeak.ogg" id="6_351u7"]
 [ext_resource type="Script" uid="uid://bmbe16sjosqdw" path="res://components/hitbox.gd" id="7_2a22p"]
 [ext_resource type="Script" uid="uid://dd4vcmtucc07g" path="res://components/particle_emitter.gd" id="8_tscb6"]
 [ext_resource type="PackedScene" uid="uid://byn4vgdaavyqd" path="res://particles/blood_particle.tscn" id="9_huath"]
@@ -16,6 +16,9 @@ height = 1.00541
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_yvjy2"]
 radius = 0.880068
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_m16py"]
+radius = 0.6
 
 [sub_resource type="Animation" id="Animation_b6v2d"]
 length = 0.001
@@ -111,12 +114,12 @@ _data = {
 &"hurt": SubResource("Animation_dt4dc")
 }
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_m16py"]
-radius = 0.6
-
-[node name="Rat" type="CharacterBody3D"]
-script = ExtResource("1_skt08")
-move_speed = 1.0
+[node name="Juan" type="CharacterBody3D"]
+script = ExtResource("1_hr58s")
+wake_sound = ExtResource("2_gfgv8")
+texture = ExtResource("2_skt08")
+pixel_size = 0.003
+metadata/_custom_type_script = "uid://btaocib3f873c"
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
@@ -139,7 +142,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 visible = false
 script = ExtResource("4_xkyld")
 health = NodePath("../Health")
-ignored_source = NodePath("..")
+ignored_source = NodePath("")
 invulnerability_time = 1.0
 metadata/_custom_type_script = "uid://cnete75ch7o2c"
 
@@ -149,18 +152,9 @@ shape = SubResource("SphereShape3D_yvjy2")
 
 [node name="PlayerDetection" parent="." instance=ExtResource("5_7a2lb")]
 
-[node name="DetectionBark" type="AudioStreamPlayer3D" parent="PlayerDetection"]
-stream = ExtResource("6_351u7")
-bus = &"SFX"
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_5texh")
-}
-
 [node name="HitBox" type="Area3D" parent="." node_paths=PackedStringArray("damage_source")]
 script = ExtResource("7_2a22p")
-damage_source = NodePath("..")
+damage_source = NodePath("")
 metadata/_custom_type_script = "uid://bmbe16sjosqdw"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HitBox"]
@@ -175,3 +169,10 @@ particle_scene = Dictionary[String, PackedScene]({
 "death": ExtResource("10_02ahc")
 })
 metadata/_custom_type_script = "uid://dd4vcmtucc07g"
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_5texh")
+}
