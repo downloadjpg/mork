@@ -4,18 +4,18 @@ var player : Player = null
 var player_dead : bool = false
 var inventory = {}
 
-var current_level : Node3D
 
 class PlayerVariables:
 	var keys_held : int = 0
 	var weapons_held : Array[Weapon]
 	var health : int
 
-
-var current_scene : Node
+var current_scene
+var game_scene : PackedScene = preload("res://main.tscn")
 
 func _ready():
 	Events.game.player_spawn.connect(_on_player_spawn)
+	Events.game.player_death.connect(restart_game)
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	inventory["key"] = 0
 
@@ -25,10 +25,7 @@ func _input(event):
 	if event.is_action_pressed("shoot"):
 		if Input.mouse_mode == Input.MOUSE_MODE_VISIBLE:
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	if event.is_action_pressed("shoot"):
-		if player_dead:
-			restart_game()
-
+			
 func send_message(msg: String):
 	Events.ui.send_message.emit(msg)
 
@@ -39,16 +36,13 @@ func set_player(node: Player):
 func _on_player_spawn(ref):
 	player = ref
 
-func _on_player_death():
-	# make player invisible
-	# add a silly bouncing camera?
-	# add text to restart
-	
-	player.visible = false
-	player_dead = true
 
 func restart_game():
-	pass
+	current_scene.queue_free()
+	var main = game_scene.instantiate()
+	get_parent().add_child(main)
+	current_scene = main
+	
 
 func change_scene(scene: PackedScene):
 	if current_scene:

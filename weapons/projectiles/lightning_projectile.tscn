@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://b52qdeyjf7qfo"]
+
+[ext_resource type="Script" uid="uid://btwxhyx6cl46j" path="res://weapons/projectiles/projectile.gd" id="1_ldssc"]
+[ext_resource type="Script" uid="uid://bmbe16sjosqdw" path="res://components/hitbox.gd" id="2_pgrj8"]
+[ext_resource type="Texture2D" uid="uid://4civg608lu4l" path="res://assets/textures/projectiles/chain_lightning.png" id="3_u7b0f"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_uedsd"]
+radius = 0.0994876
+
+[node name="LightningProjectile" type="CharacterBody3D"]
+script = ExtResource("1_ldssc")
+metadata/_custom_type_script = "uid://btwxhyx6cl46j"
+
+[node name="HitBox" type="Area3D" parent="."]
+script = ExtResource("2_pgrj8")
+metadata/_custom_type_script = "uid://bmbe16sjosqdw"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitBox"]
+shape = SubResource("SphereShape3D_uedsd")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+billboard = 2
+texture_filter = 0
+texture = ExtResource("3_u7b0f")

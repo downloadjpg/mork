@@ -11,6 +11,8 @@ class_name Player
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
+var is_already_dead = false
+
 func _ready():
 	health.health_depleted.connect(_on_health_depleted)
 	Events.game.player_spawn.emit(self)
@@ -45,4 +47,7 @@ func pickup_weapon(weapon_scene: PackedScene):
 	weapon_inventory.add_to_inventory(weapon_scene)
 	
 func _on_health_depleted():
+	if is_already_dead:
+		return
 	Events.game.player_death.emit()
+	is_already_dead = true # my hacks know no bounds
